@@ -72,7 +72,7 @@ public class FSharpDiscriminatedUnionIdGeneration: ValueTypeInfo, IIdGeneration,
 
     public static bool IsFSharpSingleCaseDiscriminatedUnion(Type type)
     {
-        return type.IsClass && type.IsSealed && type.GetProperties().Any(x => x.Name == "Tag");
+        return type.IsClass && type.IsSealed && type.GetProperties().Any(static x => x.Name == "Tag");
     }
 
     public static bool IsCandidate(Type idType,

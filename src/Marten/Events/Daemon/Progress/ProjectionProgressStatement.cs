@@ -46,7 +46,7 @@ internal class ProjectionProgressStatement: Statement
         if (Names != null)
         {
             builder.Append(" where name = ANY(");
-            builder.AppendParameter(Names.Select(x => x.Identity).ToArray());
+            builder.AppendParameter(Names.Select(static x => x.Identity).ToArray());
             builder.Append(")");
         }
     }

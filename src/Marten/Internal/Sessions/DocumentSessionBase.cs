@@ -227,8 +227,8 @@ public abstract partial class DocumentSessionBase: QuerySession, IDocumentSessio
         assertNotDisposed();
 
         var documentsGroupedByType = documents
-            .Where(x => x != null)
-            .GroupBy(x => x.GetType());
+            .Where(static x => x != null)
+            .GroupBy(static x => x.GetType());
 
         foreach (var group in documentsGroupedByType)
         {
@@ -380,7 +380,7 @@ public abstract partial class DocumentSessionBase: QuerySession, IDocumentSessio
 
     public void EjectPatchedTypes(IUnitOfWork changes)
     {
-        var patchedTypes = changes.Operations().Where(x => x.Role() == OperationRole.Patch).Select(x => x.DocumentType)
+        var patchedTypes = changes.Operations().Where(static x => x.Role() == OperationRole.Patch).Select(static x => x.DocumentType)
             .Distinct().ToArray();
         foreach (var type in patchedTypes) EjectAllOfType(type);
     }

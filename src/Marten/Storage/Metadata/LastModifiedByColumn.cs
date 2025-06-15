@@ -16,7 +16,7 @@ internal class LastModifiedByColumn: MetadataColumn<string>, ISelectableColumn
 {
     public static readonly string ColumnName = "last_modified_by";
 
-    public LastModifiedByColumn(): base(ColumnName, x => x.LastModifiedBy)
+    public LastModifiedByColumn(): base(ColumnName, static x => x.LastModifiedBy)
     {
         Enabled = false;
         ShouldUpdatePartials = true;

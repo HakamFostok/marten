@@ -410,7 +410,7 @@ public partial class DocumentStore: IDocumentStore, IDescribeMyself
         {
             Console.WriteLine("Warning: The async daemon is disabled.");
             var asyncProjectionList =
-                Options.Projections.All.Where(x => x.Lifecycle == ProjectionLifecycle.Async).Select(x => x.ToString())!
+                Options.Projections.All.Where(static x => x.Lifecycle == ProjectionLifecycle.Async).Select(static x => x.ToString())!
                     .Join(", ");
             Console.WriteLine(
                 $"Projections {asyncProjectionList} will not be executed without the async daemon enabled");

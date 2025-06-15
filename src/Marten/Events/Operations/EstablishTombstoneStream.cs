@@ -44,7 +44,7 @@ DO NOTHING
 
         if (events.StreamIdentity == StreamIdentity.AsGuid)
         {
-            _configureParameter = p =>
+            _configureParameter = static p =>
             {
                 p.Value = Tombstone.StreamId;
                 p.NpgsqlDbType = NpgsqlDbType.Uuid;
@@ -52,7 +52,7 @@ DO NOTHING
         }
         else
         {
-            _configureParameter = p =>
+            _configureParameter = static p =>
             {
                 p.Value = Tombstone.StreamKey;
                 p.NpgsqlDbType = NpgsqlDbType.Varchar;

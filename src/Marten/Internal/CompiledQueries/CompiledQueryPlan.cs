@@ -95,10 +95,10 @@ public class CompiledQueryPlan : ICommandBuilder
     private IEnumerable<MemberInfo> findMembers()
     {
         foreach (var field in QueryType.GetFields(BindingFlags.Instance | BindingFlags.Public)
-                     .Where(x => !x.HasAttribute<MartenIgnoreAttribute>())) yield return field;
+                     .Where(static x => !x.HasAttribute<MartenIgnoreAttribute>())) yield return field;
 
         foreach (var property in QueryType.GetProperties(BindingFlags.Instance | BindingFlags.Public)
-                     .Where(x => !x.HasAttribute<MartenIgnoreAttribute>())) yield return property;
+                     .Where(static x => !x.HasAttribute<MartenIgnoreAttribute>())) yield return property;
     }
 
     #endregion
@@ -298,7 +298,7 @@ public class CompiledQueryPlan : ICommandBuilder
 
     public object TryCreateUniqueTemplate(Type type)
     {
-        var constructor = type.GetConstructors().MaxBy(x => x.GetParameters().Count());
+        var constructor = type.GetConstructors().MaxBy(static x => x.GetParameters().Count());
 
 
         if (constructor == null)

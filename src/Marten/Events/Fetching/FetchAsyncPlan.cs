@@ -106,7 +106,7 @@ internal class FetchAsyncPlan<TDoc, TId>: IAggregateFetchPlan<TDoc, TId> where T
             .ConfigureAwait(false);
 
         _initialSql ??=
-            $"select {selector.SelectFields().Select(x => "d." + x).Join(", ")} from {_events.DatabaseSchemaName}.mt_events as d";
+            $"select {selector.SelectFields().Select(static x => "d." + x).Join(", ")} from {_events.DatabaseSchemaName}.mt_events as d";
 
         if (forUpdate)
         {
@@ -220,7 +220,7 @@ internal class FetchAsyncPlan<TDoc, TId>: IAggregateFetchPlan<TDoc, TId> where T
             .ConfigureAwait(false);
 
         _initialSql ??=
-            $"select {selector.SelectFields().Select(x => "d." + x).Join(", ")} from {_events.DatabaseSchemaName}.mt_events as d";
+            $"select {selector.SelectFields().Select(static x => "d." + x).Join(", ")} from {_events.DatabaseSchemaName}.mt_events as d";
 
         // TODO -- use read only transaction????
 
@@ -322,7 +322,7 @@ internal class FetchAsyncPlan<TDoc, TId>: IAggregateFetchPlan<TDoc, TId> where T
             .ConfigureAwait(false);
 
         _initialSql ??=
-            $"select {selector.SelectFields().Select(x => "d." + x).Join(", ")} from {_events.DatabaseSchemaName}.mt_events as d";
+            $"select {selector.SelectFields().Select(static x => "d." + x).Join(", ")} from {_events.DatabaseSchemaName}.mt_events as d";
 
         // TODO -- use read only transaction????
 

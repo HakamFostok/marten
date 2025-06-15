@@ -16,11 +16,11 @@ internal class StreamIdColumn: TableColumn, IEventTableColumn
     {
         if (graph.StreamIdentity == StreamIdentity.AsGuid)
         {
-            method.AssignMemberFromReader<IEvent>(null, index, x => x.StreamId);
+            method.AssignMemberFromReader<IEvent>(null, index, static x => x.StreamId);
         }
         else
         {
-            method.AssignMemberFromReader<IEvent>(null, index, x => x.StreamKey);
+            method.AssignMemberFromReader<IEvent>(null, index, static x => x.StreamKey);
         }
     }
 
@@ -28,11 +28,11 @@ internal class StreamIdColumn: TableColumn, IEventTableColumn
     {
         if (graph.StreamIdentity == StreamIdentity.AsGuid)
         {
-            method.AssignMemberFromReaderAsync<IEvent>(null, index, x => x.StreamId);
+            method.AssignMemberFromReaderAsync<IEvent>(null, index, static x => x.StreamId);
         }
         else
         {
-            method.AssignMemberFromReaderAsync<IEvent>(null, index, x => x.StreamKey);
+            method.AssignMemberFromReaderAsync<IEvent>(null, index, static x => x.StreamKey);
         }
     }
 
@@ -40,11 +40,11 @@ internal class StreamIdColumn: TableColumn, IEventTableColumn
     {
         if (graph.StreamIdentity == StreamIdentity.AsGuid)
         {
-            method.SetParameterFromMember<StreamAction>(index, x => x.Id);
+            method.SetParameterFromMember<StreamAction>(index, static x => x.Id);
         }
         else
         {
-            method.SetParameterFromMember<StreamAction>(index, x => x.Key);
+            method.SetParameterFromMember<StreamAction>(index, static x => x.Key);
         }
     }
 

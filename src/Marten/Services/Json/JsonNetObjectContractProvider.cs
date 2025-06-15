@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -80,7 +80,7 @@ namespace Marten.Services.Json
         {
             var constructors = objectType
                 .GetConstructors(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
-                .Where(c => c.GetCustomAttributes().Any(a => a.GetType() == ConstructorAttributeType)).ToList();
+                .Where(static c => c.GetCustomAttributes().Any(static a => a.GetType() == ConstructorAttributeType)).ToList();
 
             return constructors.Count switch
             {

@@ -45,7 +45,7 @@ public static class JsonTransformations
         where TEvent : notnull
     {
         return new JsonTransformation(
-            (_, _, _) =>
+            static (_, _, _) =>
                 throw new MartenException(
                     $"Cannot use JSON transformation of event '{typeof(TOldEvent)}' to '{typeof(TEvent)}' in the synchronous API" +
                     "It was defined as async only"

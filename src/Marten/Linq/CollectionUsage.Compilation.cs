@@ -98,7 +98,7 @@ public partial class CollectionUsage
         // THIS CAN BE A PROBLEM IF IT'S DONE TOO SOON
         if (IsDistinct)
         {
-            if (SelectExpression != null && OrderingExpressions.Any(x => x.IsTransformed))
+            if (SelectExpression != null && OrderingExpressions.Any(static x => x.IsTransformed))
             {
                 throw new BadLinqExpressionException(
                     "Marten is unable to build a query with a Distinct() + Select() + a 'transformed' OrderBy(). You will have to resort to SQL for this query");

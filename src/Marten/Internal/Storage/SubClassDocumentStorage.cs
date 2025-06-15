@@ -302,7 +302,7 @@ internal class SubClassDocumentStorage<T, TRoot, TId>: IDocumentStorage<T, TId>,
 
     private WhereFragment toBasicWhere()
     {
-        var aliasValues = _mapping.Aliases.Select(a => $"d.{SchemaConstants.DocumentTypeColumn} = '{a}'").ToArray()
+        var aliasValues = _mapping.Aliases.Select(static a => $"d.{SchemaConstants.DocumentTypeColumn} = '{a}'").ToArray()
             .Join(" or ");
 
         var sql = _mapping.Alias.Length > 1 ? $"({aliasValues})" : aliasValues;

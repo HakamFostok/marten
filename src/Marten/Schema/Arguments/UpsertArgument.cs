@@ -21,7 +21,7 @@ namespace Marten.Schema.Arguments;
 public class UpsertArgument
 {
     protected static readonly MethodInfo writeMethod =
-        typeof(NpgsqlBinaryImporter).GetMethods().FirstOrDefault(x =>
+        typeof(NpgsqlBinaryImporter).GetMethods().FirstOrDefault(static x =>
             x.Name == "Write" && x.GetParameters().Length == 2 &&
             x.GetParameters()[0].ParameterType.IsGenericParameter &&
             x.GetParameters()[1].ParameterType == typeof(NpgsqlDbType))!;
@@ -73,7 +73,7 @@ public class UpsertArgument
                     }
                 }
 
-                ParameterValue = _members.Select(x => x.Name).Join("?.");
+                ParameterValue = _members.Select(static x => x.Name).Join("?.");
             }
         }
     }
@@ -100,7 +100,7 @@ public class UpsertArgument
         Argument parameters,
         DocumentMapping mapping, StoreOptions options)
     {
-        var memberPath = _members.Select(x => x.Name).Join("?.");
+        var memberPath = _members.Select(static x => x.Name).Join("?.");
 
         if (DotNetType.IsEnum || (DotNetType.IsNullable() && DotNetType.GetGenericArguments()[0].IsEnum))
         {
@@ -179,7 +179,7 @@ END
             : Constant.ForEnum(DbType).Usage;
 
 
-        var memberPath = _members.Select(x => x.Name).Join("?.");
+        var memberPath = _members.Select(static x => x.Name).Join("?.");
 
         if (mapping.IdStrategy is ValueTypeIdGeneration st)
         {

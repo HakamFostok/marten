@@ -59,7 +59,7 @@ public abstract class EventDocumentStorage: IEventStorage
         var table = new EventsTable(Events);
         var columns = table.SelectColumns();
 
-        _fields = columns.Select(x => x.Name).ToArray();
+        _fields = columns.Select(static x => x.Name).ToArray();
 
         _selectClause = $"select {_fields.Join(", ")} from {Events.DatabaseSchemaName}.mt_events as d";
 

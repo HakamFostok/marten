@@ -100,7 +100,7 @@ internal class DocumentQueryableMemberCollection: IQueryableMemberCollection, IQ
 
     public IEnumerator<IQueryableMember> GetEnumerator()
     {
-        return _members.Enumerate().Select(x => x.Value).GetEnumerator();
+        return _members.Enumerate().Select(static x => x.Value).GetEnumerator();
     }
 
     public void RemoveAnyIdentityMember()

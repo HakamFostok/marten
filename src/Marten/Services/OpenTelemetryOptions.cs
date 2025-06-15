@@ -59,7 +59,7 @@ public sealed class OpenTelemetryOptions
     /// </summary>
     public void TrackEventCounters()
     {
-        ExportCounterOnChangeSets<long>("marten.event.append", "events", (counter, commit) =>
+        ExportCounterOnChangeSets<long>("marten.event.append", "events", static (counter, commit) =>
         {
             foreach (var e in commit.GetEvents())
             {

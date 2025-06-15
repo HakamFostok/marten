@@ -271,7 +271,7 @@ internal class AmbientTransactionLifetime: ConnectionLifetimeBase, IAlwaysConnec
         catch (Exception e)
         {
             Logger.LogFailure(new NpgsqlCommand(), e);
-            pages.SelectMany(x => x.Operations).OfType<IExceptionTransform>().Concat(MartenExceptionTransformer.Transforms).TransformAndThrow(e);
+            pages.SelectMany(static x => x.Operations).OfType<IExceptionTransform>().Concat(MartenExceptionTransformer.Transforms).TransformAndThrow(e);
         }
 
         if (exceptions.Count == 1)
@@ -302,7 +302,7 @@ internal class AmbientTransactionLifetime: ConnectionLifetimeBase, IAlwaysConnec
         catch (Exception e)
         {
             Logger.LogFailure(new NpgsqlCommand(), e);
-            pages.SelectMany(x => x.Operations).OfType<IExceptionTransform>().Concat(MartenExceptionTransformer.Transforms).TransformAndThrow(e);
+            pages.SelectMany(static x => x.Operations).OfType<IExceptionTransform>().Concat(MartenExceptionTransformer.Transforms).TransformAndThrow(e);
         }
 
         if (exceptions.Count == 1)

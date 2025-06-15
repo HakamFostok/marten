@@ -11,7 +11,7 @@ namespace Marten.Storage.Metadata;
 
 internal class RevisionColumn: MetadataColumn<int>, ISelectableColumn
 {
-    public RevisionColumn(): base(SchemaConstants.VersionColumn, x => x.CurrentRevision)
+    public RevisionColumn(): base(SchemaConstants.VersionColumn, static x => x.CurrentRevision)
     {
         AllowNulls = false;
         DefaultExpression = "0";

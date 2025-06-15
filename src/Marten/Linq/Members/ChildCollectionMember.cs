@@ -160,7 +160,7 @@ public class ChildCollectionMember: QueryableMember, ICollectionMember, IQueryab
 
     public IEnumerator<IQueryableMember> GetEnumerator()
     {
-        return _members.Enumerate().Select(x => x.Value).GetEnumerator();
+        return _members.Enumerate().Select(static x => x.Value).GetEnumerator();
     }
 }
 

@@ -18,7 +18,7 @@ internal class QueryCompiler
 
     static QueryCompiler()
     {
-        forType(count =>
+        forType(static count =>
         {
             var values = new string[count];
             for (var i = 0; i < values.Length; i++)
@@ -29,7 +29,7 @@ internal class QueryCompiler
             return values;
         });
 
-        forType(count =>
+        forType(static count =>
         {
             var values = new Guid[count];
             for (var i = 0; i < values.Length; i++)
@@ -40,7 +40,7 @@ internal class QueryCompiler
             return values;
         });
 
-        forType(count =>
+        forType(static count =>
         {
             var value = -100000;
             var values = new int[count];
@@ -52,7 +52,7 @@ internal class QueryCompiler
             return values;
         });
 
-        forType(count =>
+        forType(static count =>
         {
             var value = -200000L;
             var values = new long[count];
@@ -64,7 +64,7 @@ internal class QueryCompiler
             return values;
         });
 
-        forType(count =>
+        forType(static count =>
         {
             var value = -300000L;
             var values = new float[count];
@@ -76,7 +76,7 @@ internal class QueryCompiler
             return values;
         });
 
-        forType(count =>
+        forType(static count =>
         {
             var value = -300000L;
             var values = new decimal[count];
@@ -88,7 +88,7 @@ internal class QueryCompiler
             return values;
         });
 
-        forType(count =>
+        forType(static count =>
         {
             var value = new DateTime(1600, 1, 1);
             var values = new DateTime[count];
@@ -100,7 +100,7 @@ internal class QueryCompiler
             return values;
         });
 
-        forType(count =>
+        forType(static count =>
         {
             var value = new DateTimeOffset(1600, 1, 1, 0, 0, 0, 0.Seconds());
             var values = new DateTimeOffset[count];
@@ -191,7 +191,7 @@ internal class QueryCompiler
     {
         var type = query.GetType();
 
-        foreach (var propertyInfo in type.GetProperties().Where(x => x.CanWrite && x.PropertyType == typeof(string)))
+        foreach (var propertyInfo in type.GetProperties().Where(static x => x.CanWrite && x.PropertyType == typeof(string)))
         {
             var raw = propertyInfo.GetValue(query);
             if (raw == null)
@@ -200,7 +200,7 @@ internal class QueryCompiler
             }
         }
 
-        foreach (var fieldInfo in type.GetFields().Where(x => x.FieldType == typeof(string)))
+        foreach (var fieldInfo in type.GetFields().Where(static x => x.FieldType == typeof(string)))
         {
             var raw = fieldInfo.GetValue(query);
             if (raw == null)
@@ -216,7 +216,7 @@ internal class QueryCompiler
         if (plan.InvalidMembers.Any())
         {
             // Remove any value types here!
-            foreach (var member in plan.InvalidMembers.Where(x => !x.GetRawMemberType()!.IsNullable()).ToArray())
+            foreach (var member in plan.InvalidMembers.Where(static x => !x.GetRawMemberType()!.IsNullable()).ToArray())
             {
                 if (options.TryFindValueType(member.GetMemberType()!) != null)
                 {
@@ -226,7 +226,7 @@ internal class QueryCompiler
 
             if (!plan.InvalidMembers.Any()) return;
 
-            var members = plan.InvalidMembers.Select(x => $"{x.GetRawMemberType()!.NameInCode()} {x.Name}")
+            var members = plan.InvalidMembers.Select(static x => $"{x.GetRawMemberType()!.NameInCode()} {x.Name}")
                 .Join(", ");
             var message = $"Members {members} cannot be used as parameters to a compiled query";
 

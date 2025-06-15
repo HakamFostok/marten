@@ -69,7 +69,7 @@ public partial class FlatTableProjection: ProjectionBase, IProjectionSource<IDoc
 
         yield return Table;
 
-        foreach (var handler in _handlers.Enumerate().Select(x => x.Value))
+        foreach (var handler in _handlers.Enumerate().Select(static x => x.Value))
         {
             foreach (var schemaObject in handler.BuildObjects(events, Table))
             {
@@ -139,7 +139,7 @@ public partial class FlatTableProjection: ProjectionBase, IProjectionSource<IDoc
 
     public Task ApplyAsync(IDocumentOperations operations, IReadOnlyList<StreamAction> streams, CancellationToken cancellation)
     {
-        apply(operations, streams.SelectMany(x => x.Events).ToList());
+        apply(operations, streams.SelectMany(static x => x.Events).ToList());
         return Task.CompletedTask;
     }
 

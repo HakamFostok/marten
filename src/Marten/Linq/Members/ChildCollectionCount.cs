@@ -23,7 +23,7 @@ internal class ChildCollectionCount: IComparableMember, IWhereFragmentHolder
 
     public ISqlFragment CreateComparison(string op, ConstantExpression constant)
     {
-        if (Wheres.All(x => x is ICollectionAware aware && aware.CanBeJsonPathFilter()))
+        if (Wheres.All(static x => x is ICollectionAware aware && aware.CanBeJsonPathFilter()))
         {
             return new ChildCollectionJsonPathCountFilter(_collection, _serializer, Wheres.OfType<ICollectionAware>(),
                 op, constant);

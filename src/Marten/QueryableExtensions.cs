@@ -523,7 +523,7 @@ public static class QueryableExtensions
         var orderedQueryable = queryable.OrderBy(properties.First());
 
         // handle the rest of the properties
-        return properties.Skip(1).Aggregate(orderedQueryable, (current, prop) => current.OrderBy(prop));
+        return properties.Skip(1).Aggregate(orderedQueryable, static (current, prop) => current.OrderBy(prop));
     }
 
     /// <summary>
@@ -548,7 +548,7 @@ public static class QueryableExtensions
         var orderedQueryable = queryable.OrderBy(properties.First());
 
         // handle the rest of the properties
-        return properties.Skip(1).Aggregate(orderedQueryable, (current, prop) => current.OrderBy(prop));
+        return properties.Skip(1).Aggregate(orderedQueryable, static (current, prop) => current.OrderBy(prop));
     }
 
     /// <summary>
@@ -583,7 +583,7 @@ public static class QueryableExtensions
     }
 
     internal static readonly MethodInfo OrderByFieldNameAndComparerMethod = typeof(QueryableExtensions)
-        .GetMethods(BindingFlags.Public | BindingFlags.Static).Where(x => x.Name == nameof(OrderBy)).Single(x =>
+        .GetMethods(BindingFlags.Public | BindingFlags.Static).Where(static x => x.Name == nameof(OrderBy)).Single(static x =>
         {
             var parameters = x.GetParameters();
             return parameters.Length == 3 && parameters[1].ParameterType == typeof(string) &&

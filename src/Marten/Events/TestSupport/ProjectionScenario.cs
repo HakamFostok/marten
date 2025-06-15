@@ -71,7 +71,7 @@ public partial class ProjectionScenario: IEventOperations
         {
             await _store.Advanced.Clean.DeleteAllEventDataAsync(ct).ConfigureAwait(false);
             foreach (var storageType in
-                     _store.Options.Projections.All.SelectMany(x => x.Options.StorageTypes))
+                     _store.Options.Projections.All.SelectMany(static x => x.Options.StorageTypes))
                 await _store.Advanced.Clean.DeleteDocumentsByTypeAsync(storageType, ct).ConfigureAwait(false);
         }
 

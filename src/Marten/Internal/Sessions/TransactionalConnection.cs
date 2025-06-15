@@ -347,7 +347,7 @@ internal class TransactionalConnection: ConnectionLifetimeBase, IAlwaysConnected
         {
             Rollback();
             Logger.LogFailure(new NpgsqlCommand(), e);
-            pages.SelectMany(x => x.Operations).OfType<IExceptionTransform>().Concat(MartenExceptionTransformer.Transforms).TransformAndThrow(e);
+            pages.SelectMany(static x => x.Operations).OfType<IExceptionTransform>().Concat(MartenExceptionTransformer.Transforms).TransformAndThrow(e);
         }
 
         if (exceptions.Count == 1)
@@ -384,7 +384,7 @@ internal class TransactionalConnection: ConnectionLifetimeBase, IAlwaysConnected
         {
             await RollbackAsync(token).ConfigureAwait(false);
             Logger.LogFailure(new NpgsqlCommand(), e);
-            pages.SelectMany(x => x.Operations).OfType<IExceptionTransform>().Concat(MartenExceptionTransformer.Transforms).TransformAndThrow(e);
+            pages.SelectMany(static x => x.Operations).OfType<IExceptionTransform>().Concat(MartenExceptionTransformer.Transforms).TransformAndThrow(e);
         }
 
         if (exceptions.Count == 1)

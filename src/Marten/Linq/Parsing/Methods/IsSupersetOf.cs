@@ -39,7 +39,7 @@ internal class IsSupersetOf: IMethodCallParser
         return method.Name == "IsSupersetOf" &&
                method.DeclaringType!
                    .GetInterfaces()
-                   .Where(i => i.IsGenericType)
-                   .Any(i => i.GetGenericTypeDefinition() == typeof(ISet<>));
+                   .Where(static i => i.IsGenericType)
+                   .Any(static i => i.GetGenericTypeDefinition() == typeof(ISet<>));
     }
 }

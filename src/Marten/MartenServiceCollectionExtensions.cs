@@ -350,7 +350,7 @@ public static class MartenServiceCollectionExtensions
     internal static void EnsureAsyncConfigureMartenApplicationIsRegistered(this IServiceCollection services)
     {
         if (!services.Any(
-                x => x.ServiceType == typeof(IHostedService) &&
+                static x => x.ServiceType == typeof(IHostedService) &&
                      x.ImplementationType == typeof(AsyncConfigureMartenApplication)))
         {
             services.Insert(0,
@@ -362,9 +362,9 @@ public static class MartenServiceCollectionExtensions
     internal static void EnsureMartenActivatorIsRegistered(this IServiceCollection services)
     {
         if (!services.Any(
-                x => x.ServiceType == typeof(IHostedService) && x.ImplementationType == typeof(MartenActivator)))
+                static x => x.ServiceType == typeof(IHostedService) && x.ImplementationType == typeof(MartenActivator)))
         {
-            var descriptor = services.FirstOrDefault(x =>
+            var descriptor = services.FirstOrDefault(static x =>
                 x.ServiceType == typeof(IHostedService) &&
                 x.ImplementationType == typeof(AsyncConfigureMartenApplication));
 
@@ -385,7 +385,7 @@ public static class MartenServiceCollectionExtensions
     internal static void EnsureMartenActivatorIsRegistered<T>(this IServiceCollection services) where T : IDocumentStore
     {
         if (!services.Any(
-                x => x.ServiceType == typeof(IHostedService) && x.ImplementationType == typeof(MartenActivator<T>)))
+                static x => x.ServiceType == typeof(IHostedService) && x.ImplementationType == typeof(MartenActivator<T>)))
         {
             services.Insert(0,
                 new ServiceDescriptor(typeof(IHostedService), typeof(MartenActivator<T>), ServiceLifetime.Singleton));
@@ -484,7 +484,7 @@ public static class MartenServiceCollectionExtensions
         {
             Services.EnsureMartenActivatorIsRegistered<T>();
 
-            Services.ConfigureMarten<T>(opts => opts.ShouldApplyChangesOnStartup = true);
+            Services.ConfigureMarten<T>(static opts => opts.ShouldApplyChangesOnStartup = true);
 
             return this;
         }
@@ -643,7 +643,7 @@ public static class MartenServiceCollectionExtensions
         {
             Services.EnsureMartenActivatorIsRegistered();
 
-            Services.ConfigureMarten(opts => opts.ShouldApplyChangesOnStartup = true);
+            Services.ConfigureMarten(static opts => opts.ShouldApplyChangesOnStartup = true);
 
             return this;
         }
@@ -658,7 +658,7 @@ public static class MartenServiceCollectionExtensions
         {
             Services.EnsureMartenActivatorIsRegistered();
 
-            Services.ConfigureMarten(opts => opts.ShouldAssertDatabaseMatchesConfigurationOnStartup = true);
+            Services.ConfigureMarten(static opts => opts.ShouldAssertDatabaseMatchesConfigurationOnStartup = true);
 
             return this;
         }

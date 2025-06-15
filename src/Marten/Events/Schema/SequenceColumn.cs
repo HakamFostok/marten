@@ -4,7 +4,7 @@ namespace Marten.Events.Schema;
 
 internal class SequenceColumn: EventTableColumn
 {
-    public SequenceColumn() : base("seq_id", x => x.Sequence)
+    public SequenceColumn() : base("seq_id", static x => x.Sequence)
     {
         AllowNulls = false;
     }

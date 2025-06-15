@@ -40,7 +40,7 @@ internal class IsSubsetOf: IMethodCallParser
         return method.Name == "IsSubsetOf" &&
                method.DeclaringType!
                    .GetInterfaces()
-                   .Where(i => i.IsGenericType)
-                   .Any(i => i.GetGenericTypeDefinition() == typeof(ISet<>));
+                   .Where(static i => i.IsGenericType)
+                   .Any(static i => i.GetGenericTypeDefinition() == typeof(ISet<>));
     }
 }

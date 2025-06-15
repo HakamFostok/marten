@@ -15,13 +15,13 @@ internal class EventsTable: Table
     public EventsTable(EventGraph events): base(new PostgresqlObjectName(events.DatabaseSchemaName, "mt_events"))
     {
         AddColumn(new SequenceColumn()).AsPrimaryKey();
-        AddColumn(new EventTableColumn("id", x => x.Id)).NotNull();
+        AddColumn(new EventTableColumn("id", static x => x.Id)).NotNull();
         AddColumn(new StreamIdColumn(events));
 
         AddColumn(new VersionColumn());
         AddColumn<EventJsonDataColumn>();
         AddColumn<EventTypeColumn>();
-        AddColumn(new EventTableColumn("timestamp", x => x.Timestamp))
+        AddColumn(new EventTableColumn("timestamp", static x => x.Timestamp))
             .NotNull().DefaultValueByString("(now())");
 
         AddColumn<TenantIdColumn>();

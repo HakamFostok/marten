@@ -68,7 +68,7 @@ internal class PatchFragment: IOperationFragment
 
         if (_storage is IHaveMetadataColumns metadata)
         {
-            foreach (var column in metadata.MetadataColumns().Where(x => x.Enabled && x.ShouldUpdatePartials))
+            foreach (var column in metadata.MetadataColumns().Where(static x => x.Enabled && x.ShouldUpdatePartials))
             {
                 builder.Append(", ");
                 column.WriteMetadataInUpdateStatement(builder, _session);

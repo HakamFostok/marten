@@ -12,7 +12,7 @@ public static class StringExtensions
         if (type.IsGenericType)
         {
             return type.Name.Split('`').First() + "_of_" +
-                   type.GetGenericArguments().Select(x => x.ToTypeNamePart()).Join("_");
+                   type.GetGenericArguments().Select(static x => x.ToTypeNamePart()).Join("_");
         }
 
         return type.Name;

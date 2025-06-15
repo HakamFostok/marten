@@ -9,7 +9,7 @@ namespace Marten.Linq.Parsing.Operators;
 public class WhereOperator: LinqOperator
 {
     private readonly Cache<Type, object> _always
-        = new(type => typeof(FuncBuilder<>).CloseAndBuildAs<IFuncBuilder>(type).Build());
+        = new(static type => typeof(FuncBuilder<>).CloseAndBuildAs<IFuncBuilder>(type).Build());
 
 
     public WhereOperator(): base("Where")
@@ -31,7 +31,7 @@ public class WhereOperator: LinqOperator
     {
         public object Build()
         {
-            Expression<Func<T, bool>> filter = _ => true;
+            Expression<Func<T, bool>> filter = static _ => true;
             return filter;
         }
     }

@@ -60,7 +60,7 @@ internal class UnitOfWork: ISessionWorkTracker
     {
         if (shouldSort(options, out var comparer))
         {
-            var sorted = _operations.OrderBy(f => f, comparer).ToList();
+            var sorted = _operations.OrderBy(static f => f, comparer).ToList();
             _operations.Clear();
             _operations.AddRange(sorted);
         }
@@ -74,7 +74,7 @@ internal class UnitOfWork: ISessionWorkTracker
 
     IEnumerable<IDeletion> IUnitOfWork.DeletionsFor<T>()
     {
-        return _operations.OfType<IDeletion>().Where(x => x.DocumentType.CanBeCastTo<T>());
+        return _operations.OfType<IDeletion>().Where(static x => x.DocumentType.CanBeCastTo<T>());
     }
 
     IEnumerable<IDeletion> IUnitOfWork.DeletionsFor(Type documentType)
@@ -97,8 +97,8 @@ internal class UnitOfWork: ISessionWorkTracker
     {
         return _operations
             .OfType<IDocumentStorageOperation>()
-            .Where(x => x.Role() == OperationRole.Insert)
-            .Select(x => x.Document);
+            .Where(static x => x.Role() == OperationRole.Insert)
+            .Select(static x => x.Document);
     }
 
     IEnumerable<T> IUnitOfWork.UpdatesFor<T>()
@@ -121,8 +121,8 @@ internal class UnitOfWork: ISessionWorkTracker
     {
         return _operations
             .OfType<IDocumentStorageOperation>()
-            .Where(x => x.Role() == OperationRole.Insert)
-            .Select(x => x.Document)
+            .Where(static x => x.Role() == OperationRole.Insert)
+            .Select(static x => x.Document)
             .OfType<T>();
     }
 
@@ -156,7 +156,7 @@ internal class UnitOfWork: ISessionWorkTracker
 
     IEnumerable<IStorageOperation> IUnitOfWork.OperationsFor<T>()
     {
-        return _operations.Where(x => x.DocumentType.CanBeCastTo<T>());
+        return _operations.Where(static x => x.DocumentType.CanBeCastTo<T>());
     }
 
     IEnumerable<IStorageOperation> IUnitOfWork.OperationsFor(Type documentType)
@@ -165,16 +165,16 @@ internal class UnitOfWork: ISessionWorkTracker
     }
 
     IEnumerable<object> IChangeSet.Updated => _operations.OfType<IDocumentStorageOperation>()
-        .Where(x => x.Role() == OperationRole.Update || x.Role() == OperationRole.Upsert).Select(x => x.Document);
+        .Where(static x => x.Role() == OperationRole.Update || x.Role() == OperationRole.Upsert).Select(static x => x.Document);
 
     IEnumerable<object> IChangeSet.Inserted => _operations.OfType<IDocumentStorageOperation>()
-        .Where(x => x.Role() == OperationRole.Insert).Select(x => x.Document);
+        .Where(static x => x.Role() == OperationRole.Insert).Select(static x => x.Document);
 
     IEnumerable<IDeletion> IChangeSet.Deleted => _operations.OfType<IDeletion>();
 
     IEnumerable<IEvent> IChangeSet.GetEvents()
     {
-        return Streams.SelectMany(x => x.Events);
+        return Streams.SelectMany(static x => x.Events);
     }
 
     IEnumerable<StreamAction> IChangeSet.GetStreams()
@@ -209,7 +209,7 @@ internal class UnitOfWork: ISessionWorkTracker
 
     public bool HasOutstandingWork()
     {
-        return _operations.Any() || Streams.Any(x => x.Events.Count > 0) || _eventOperations.Any();
+        return _operations.Any() || Streams.Any(static x => x.Events.Count > 0) || _eventOperations.Any();
     }
 
     public void EjectAll()

@@ -7,7 +7,7 @@ namespace Marten.Events.Schema;
 
 internal class VersionColumn: EventTableColumn
 {
-    public VersionColumn() : base("version", x => x.Version)
+    public VersionColumn() : base("version", static x => x.Version)
     {
         AllowNulls = false;
     }

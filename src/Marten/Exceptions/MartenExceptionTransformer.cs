@@ -23,15 +23,15 @@ internal static class MartenExceptionTransformer
         Transforms.AddTransform<InvalidConnectionStreamExceptionTransform>();
 
         Transforms.IfExceptionIs<PostgresException>()
-            .If(e => e.SqlState == PostgresErrorCodes.SerializationFailure)
-            .ThenTransformTo(e => throw new ConcurrentUpdateException(e));
+            .If(static e => e.SqlState == PostgresErrorCodes.SerializationFailure)
+            .ThenTransformTo(static e => throw new ConcurrentUpdateException(e));
 
         Transforms.IfExceptionIs<PostgresException>()
-            .If(e => e.ErrorCode == 42704)
-            .ThenTransformTo(e => throw new MissingGinExtensionException(e));
+            .If(static e => e.ErrorCode == 42704)
+            .ThenTransformTo(static e => throw new MissingGinExtensionException(e));
 
         Transforms.IfExceptionIs<NpgsqlException>()
-            .TransformTo(e =>
+            .TransformTo(static e =>
             {
                 var command = e.ReadNpgsqlCommand();
                 return new MartenCommandException(command, e);

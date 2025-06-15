@@ -37,7 +37,7 @@ internal class DefaultMartenLogger: IMartenLogger, IMartenSessionLogger
         {
             var duration = _timestamp.HasValue ? Stopwatch.GetElapsedTime(_timestamp!.Value) : 0.Seconds();
             var parameters = command.Parameters
-                .Select(p => $"  {p.ParameterName}: {p.Value}")
+                .Select(static p => $"  {p.ParameterName}: {p.Value}")
                 .Join(Environment.NewLine);
             _loggerOutput.LogSuccess(duration.TotalMilliseconds, command.CommandText, parameters);
         }
@@ -51,7 +51,7 @@ internal class DefaultMartenLogger: IMartenLogger, IMartenSessionLogger
             foreach (var command in batch.BatchCommands)
             {
                 var parameters = command.Parameters.OfType<NpgsqlParameter>()
-                    .Select(p => $"  {p.ParameterName}: {p.Value}")
+                    .Select(static p => $"  {p.ParameterName}: {p.Value}")
                     .Join(Environment.NewLine);
                 _loggerOutput.LogSuccess(duration.TotalMilliseconds, command.CommandText, parameters);
             }
@@ -61,7 +61,7 @@ internal class DefaultMartenLogger: IMartenLogger, IMartenSessionLogger
     public void LogFailure(NpgsqlCommand command, Exception ex)
     {
         var parameters = command.Parameters
-            .Select(p => $"  {p.ParameterName}: {p.Value}")
+            .Select(static p => $"  {p.ParameterName}: {p.Value}")
             .Join(Environment.NewLine);
 
         _loggerOutput.LogError(ex, command.CommandText, parameters);
@@ -72,7 +72,7 @@ internal class DefaultMartenLogger: IMartenLogger, IMartenSessionLogger
         foreach (var command in batch.BatchCommands)
         {
             var parameters = command.Parameters.OfType<NpgsqlParameter>()
-                .Select(p => $"  {p.ParameterName}: {p.Value}")
+                .Select(static p => $"  {p.ParameterName}: {p.Value}")
                 .Join(Environment.NewLine);
 
             _loggerOutput.LogError(ex, command.CommandText, parameters);

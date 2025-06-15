@@ -56,17 +56,17 @@ public class DocumentProviderBuilder: ICodeFile
         assembly.UsingNamespaces.Add(typeof(Weasel.Core.CommandExtensions).Namespace!);
 
 
-        var queryOnly = new DocumentStorageBuilder(_mapping, StorageStyle.QueryOnly, x => x.QueryOnlySelector)
+        var queryOnly = new DocumentStorageBuilder(_mapping, StorageStyle.QueryOnly, static x => x.QueryOnlySelector)
             .Build(assembly, operations);
 
-        var lightweight = new DocumentStorageBuilder(_mapping, StorageStyle.Lightweight, x => x.LightweightSelector)
+        var lightweight = new DocumentStorageBuilder(_mapping, StorageStyle.Lightweight, static x => x.LightweightSelector)
             .Build(assembly, operations);
 
-        var identityMap = new DocumentStorageBuilder(_mapping, StorageStyle.IdentityMap, x => x.IdentityMapSelector)
+        var identityMap = new DocumentStorageBuilder(_mapping, StorageStyle.IdentityMap, static x => x.IdentityMapSelector)
             .Build(assembly, operations);
 
         var dirtyTracking =
-            new DocumentStorageBuilder(_mapping, StorageStyle.DirtyTracking, x => x.DirtyCheckingSelector)
+            new DocumentStorageBuilder(_mapping, StorageStyle.DirtyTracking, static x => x.DirtyCheckingSelector)
                 .Build(assembly, operations);
 
         var bulkWriterType = new BulkLoaderBuilder(_mapping).BuildType(assembly);

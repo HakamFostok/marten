@@ -77,17 +77,17 @@ internal class BulkInsertion: IDisposable
 
     private static Type[] documentTypes(IEnumerable<object> documents)
     {
-        return documents.Where(x => x != null)
-            .GroupBy(x => x.GetType())
-            .Select(x => x.Key)
+        return documents.Where(static x => x != null)
+            .GroupBy(static x => x.GetType())
+            .Select(static x => x.Key)
             .ToArray();
     }
 
     private static IBulkInserter[] bulkInserters(IEnumerable<object> documents)
     {
-        return documents.Where(x => x != null)
-            .GroupBy(x => x.GetType())
-            .Select(group => typeof(BulkInserter<>).CloseAndBuildAs<IBulkInserter>(group, group.Key))
+        return documents.Where(static x => x != null)
+            .GroupBy(static x => x.GetType())
+            .Select(static group => typeof(BulkInserter<>).CloseAndBuildAs<IBulkInserter>(group, group.Key))
             .ToArray();
     }
 

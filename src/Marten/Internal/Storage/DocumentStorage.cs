@@ -46,8 +46,8 @@ public abstract class DocumentStorage<T, TId>: IDocumentStorage<T, TId>, IHaveMe
     private readonly string[] _selectFields;
     private ISqlFragment? _defaultWhere;
     protected Action<T, TId> _setter;
-    protected Action<T, string> _setFromString = (_, _) => throw new NotSupportedException();
-    protected Action<T, Guid> _setFromGuid = (_, _) => throw new NotSupportedException();
+    protected Action<T, string> _setFromString = static (_, _) => throw new NotSupportedException();
+    protected Action<T, Guid> _setFromGuid = static (_, _) => throw new NotSupportedException();
 
 
     private readonly DocumentMapping _document;

@@ -36,7 +36,7 @@ public abstract class QuickAppendEventsOperationBase : IStorageOperation
 
     public override string ToString()
     {
-        return $"Append {Stream.Events.Select(x => x.EventTypeName).Join(", ")} to event stream {Stream}";
+        return $"Append {Stream.Events.Select(static x => x.EventTypeName).Join(", ")} to event stream {Stream}";
     }
 
     public abstract void ConfigureCommand(ICommandBuilder builder, IMartenSession session);
@@ -105,13 +105,13 @@ public abstract class QuickAppendEventsOperationBase : IStorageOperation
 
     protected void writeCausationIds(IGroupedParameterBuilder builder)
     {
-        var param = builder.AppendParameter(Stream.Events.Select(x => x.CausationId).ToArray());
+        var param = builder.AppendParameter(Stream.Events.Select(static x => x.CausationId).ToArray());
         param.NpgsqlDbType = NpgsqlDbType.Array | NpgsqlDbType.Varchar;
     }
 
     protected void writeCorrelationIds(IGroupedParameterBuilder builder)
     {
-        var param = builder.AppendParameter(Stream.Events.Select(x => x.CorrelationId).ToArray());
+        var param = builder.AppendParameter(Stream.Events.Select(static x => x.CorrelationId).ToArray());
         param.NpgsqlDbType = NpgsqlDbType.Array | NpgsqlDbType.Varchar;
     }
 

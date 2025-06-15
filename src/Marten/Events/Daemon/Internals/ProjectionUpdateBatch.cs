@@ -225,7 +225,7 @@ public class ProjectionUpdateBatch: IUpdateBatch, IAsyncDisposable, IDisposable,
         var listeners = _settings.AsyncListeners.Concat(Listeners).ToArray();
         if (!listeners.Any()) return;
 
-        var unitOfWorkData = new UnitOfWork(_pages.SelectMany(x => x.Operations));
+        var unitOfWorkData = new UnitOfWork(_pages.SelectMany(static x => x.Operations));
         foreach (var listener in listeners)
         {
             await listener.AfterCommitAsync((IDocumentSession)session, unitOfWorkData, _token)
@@ -243,7 +243,7 @@ public class ProjectionUpdateBatch: IUpdateBatch, IAsyncDisposable, IDisposable,
         var listeners = _settings.AsyncListeners.Concat(Listeners).ToArray();
         if (!listeners.Any()) return;
 
-        var unitOfWorkData = new UnitOfWork(_pages.SelectMany(x => x.Operations));
+        var unitOfWorkData = new UnitOfWork(_pages.SelectMany(static x => x.Operations));
         foreach (var listener in listeners)
         {
             await listener.BeforeCommitAsync((IDocumentSession)session, unitOfWorkData, _token)
@@ -297,7 +297,7 @@ public class ProjectionUpdateBatch: IUpdateBatch, IAsyncDisposable, IDisposable,
         }
 
         // Guard against empty batches
-        return _pages.Where(x => x.Operations.Any()).ToList();
+        return _pages.Where(static x => x.Operations.Any()).ToList();
     }
 
 

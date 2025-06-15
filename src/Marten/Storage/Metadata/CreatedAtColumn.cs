@@ -8,7 +8,7 @@ namespace Marten.Storage.Metadata;
 
 internal class CreatedAtColumn: MetadataColumn<DateTimeOffset>, ISelectableColumn
 {
-    public CreatedAtColumn(): base(SchemaConstants.CreatedAtColumn, x => x.CreatedAt)
+    public CreatedAtColumn(): base(SchemaConstants.CreatedAtColumn, static x => x.CreatedAt)
     {
         DefaultExpression = "(transaction_timestamp())";
         Type = "timestamp with time zone";

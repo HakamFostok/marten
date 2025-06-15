@@ -16,7 +16,7 @@ internal class QuickEventAppender: IEventAppender
     {
         var storage = session.EventStorage();
 
-        foreach (var stream in session.WorkTracker.Streams.Where(x => x.Events.Any()))
+        foreach (var stream in session.WorkTracker.Streams.Where(static x => x.Events.Any()))
         {
             stream.TenantId ??= session.TenantId;
 

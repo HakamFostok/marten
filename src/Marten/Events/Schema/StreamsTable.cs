@@ -30,15 +30,15 @@ internal class StreamsTable: Table
         }
 
         var idColumn = events.StreamIdentity == StreamIdentity.AsGuid
-            ? new StreamTableColumn("id", x => x.Id)
-            : new StreamTableColumn("id", x => x.Key);
+            ? new StreamTableColumn("id", static x => x.Id)
+            : new StreamTableColumn("id", static x => x.Key);
 
         AddColumn(idColumn).AsPrimaryKey();
-        AddColumn(new StreamTableColumn("type", x => x.AggregateTypeName)).AllowNulls();
+        AddColumn(new StreamTableColumn("type", static x => x.AggregateTypeName)).AllowNulls();
 
-        AddColumn(new StreamTableColumn("version", x => x.Version)).AllowNulls();
+        AddColumn(new StreamTableColumn("version", static x => x.Version)).AllowNulls();
 
-        AddColumn(new StreamTableColumn("timestamp", x => x.Timestamp)
+        AddColumn(new StreamTableColumn("timestamp", static x => x.Timestamp)
         {
             Type = "timestamptz", Writes = false, AllowNulls = false, DefaultExpression = "(now())"
         });
@@ -46,7 +46,7 @@ internal class StreamsTable: Table
         AddColumn("snapshot", "jsonb");
         AddColumn("snapshot_version", "integer");
 
-        AddColumn(new StreamTableColumn("created", x => x.Created)
+        AddColumn(new StreamTableColumn("created", static x => x.Created)
         {
             Type = "timestamptz", Writes = false, AllowNulls = false, DefaultExpression = "(now())"
         });

@@ -57,10 +57,10 @@ public class StorageFeatures: IFeatureSchema, IDescribeMyself
     internal SystemFunctions SystemFunctions { get; }
 
     internal IEnumerable<DocumentMapping> AllDocumentMappings =>
-        _documentMappings.Value.Enumerate().Select(x => x.Value);
+        _documentMappings.Value.Enumerate().Select(static x => x.Value);
 
     internal IEnumerable<DocumentMapping> DocumentMappingsWithSchema =>
-        _documentMappings.Value.Enumerate().Where(x => !x.Value.SkipSchemaGeneration).Select(x => x.Value);
+        _documentMappings.Value.Enumerate().Where(static x => !x.Value.SkipSchemaGeneration).Select(static x => x.Value);
 
     void IFeatureSchema.WritePermissions(Migrator rules, TextWriter writer)
     {
@@ -87,7 +87,7 @@ public class StorageFeatures: IFeatureSchema, IDescribeMyself
             if (_buildingList.Value!.Contains(type))
             {
                 throw new InvalidOperationException(
-                    $"Cyclic dependency between documents detected. The types are: {_buildingList.Value.Select(x => x.FullNameInCode()).Join(", ")}");
+                    $"Cyclic dependency between documents detected. The types are: {_buildingList.Value.Select(static x => x.FullNameInCode()).Join(", ")}");
             }
         }
         else
@@ -218,19 +218,19 @@ public class StorageFeatures: IFeatureSchema, IDescribeMyself
     private void assertNoDuplicateDocumentAliases()
     {
         var duplicates =
-            AllDocumentMappings.Where(x => !x.StructuralTyped)
-                .GroupBy(x => $"{x.DatabaseSchemaName}.{x.Alias}")
-                .Where(x => x.Count() > 1)
+            AllDocumentMappings.Where(static x => !x.StructuralTyped)
+                .GroupBy(static x => $"{x.DatabaseSchemaName}.{x.Alias}")
+                .Where(static x => x.Count() > 1)
                 .ToArray();
 
         if (duplicates.Any())
         {
             var message = duplicates
                     // We are making it legal to use the same document alias across different schemas
-                .Select(group =>
+                .Select(static group =>
             {
                 return
-                    $"Document types {group.Select(x => x.DocumentType.FullName!).Join(", ")} all have the same document alias '{group.Key}'. You must explicitly make document type aliases to disambiguate the database schema objects";
+                    $"Document types {group.Select(static x => x.DocumentType.FullName!).Join(", ")} all have the same document alias '{group.Key}'. You must explicitly make document type aliases to disambiguate the database schema objects";
             }).Join("\n");
 
             throw new AmbiguousDocumentTypeAliasesException(message);
@@ -346,7 +346,7 @@ public class StorageFeatures: IFeatureSchema, IDescribeMyself
 
     internal bool SequenceIsRequired()
     {
-        return DocumentMappingsWithSchema.Any(x => x.IdStrategy.IsNumeric);
+        return DocumentMappingsWithSchema.Any(static x => x.IdStrategy.IsNumeric);
     }
 
     internal IEnumerable<Type> GetTypeDependencies(Type type)

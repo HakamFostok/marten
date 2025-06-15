@@ -204,7 +204,7 @@ internal class EventTracingConnectionLifetime:
     {
         if (_telemetryOptions.TrackConnections == TrackLevel.Verbose)
         {
-            var ops = pages.SelectMany(x => x.Operations);
+            var ops = pages.SelectMany(static x => x.Operations);
             foreach (var op in ops)
             {
                 if (op is AppendEventOperationBase eventOp)

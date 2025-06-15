@@ -57,7 +57,7 @@ internal class DocumentTable: Table
 
         AddIfActive(_mapping.Metadata.Revision);
 
-        foreach (var field in mapping.DuplicatedFields.Where(x => !x.OnlyForSearching))
+        foreach (var field in mapping.DuplicatedFields.Where(static x => !x.OnlyForSearching))
         {
             AddColumn(new DuplicatedFieldColumn(field));
         }
@@ -129,10 +129,10 @@ internal class DocumentTable: Table
         return template
             .Replace(Migrator.SCHEMA, Identifier.Schema)
             .Replace(Migrator.TABLENAME, Identifier.Name)
-            .Replace(Migrator.COLUMNS, Columns.Select(x => x.Name).Join(", "))
+            .Replace(Migrator.COLUMNS, Columns.Select(static x => x.Name).Join(", "))
             .Replace(Migrator.NON_ID_COLUMNS,
-                Columns.Where(x => !x.Name.EqualsIgnoreCase("id")).Select(x => x.Name).Join(", "))
-            .Replace(Migrator.METADATA_COLUMNS, Columns.OfType<MetadataColumn>().Select(x => x.Name).Join(", "));
+                Columns.Where(static x => !x.Name.EqualsIgnoreCase("id")).Select(static x => x.Name).Join(", "))
+            .Replace(Migrator.METADATA_COLUMNS, Columns.OfType<MetadataColumn>().Select(static x => x.Name).Join(", "));
     }
 
     public void WriteTemplate(SqlTemplate template, TextWriter writer)

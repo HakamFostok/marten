@@ -10,7 +10,7 @@ namespace Marten.Storage.Metadata;
 
 internal class VersionColumn: MetadataColumn<Guid>, ISelectableColumn
 {
-    public VersionColumn(): base(SchemaConstants.VersionColumn, x => x.CurrentVersion)
+    public VersionColumn(): base(SchemaConstants.VersionColumn, static x => x.CurrentVersion)
     {
         AllowNulls = false;
         DefaultExpression = "(md5(random()::text || clock_timestamp()::text)::uuid)";

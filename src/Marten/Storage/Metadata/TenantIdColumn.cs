@@ -14,7 +14,7 @@ internal class TenantIdColumn: MetadataColumn<string>, ISelectableColumn, IEvent
 {
     public static new readonly string Name = StorageConstants.TenantIdColumn;
 
-    public TenantIdColumn(): base(Name, x => x.TenantId)
+    public TenantIdColumn(): base(Name, static x => x.TenantId)
     {
         DefaultExpression = $"'{StorageConstants.DefaultTenantId}'";
     }
@@ -37,7 +37,7 @@ internal class TenantIdColumn: MetadataColumn<string>, ISelectableColumn, IEvent
 
     public void GenerateAppendCode(GeneratedMethod method, EventGraph graph, int index, AppendMode full)
     {
-        method.SetParameterFromMember<StreamAction>(index, x => x.TenantId);
+        method.SetParameterFromMember<StreamAction>(index, static x => x.TenantId);
     }
 
     public void GenerateCode(StorageStyle storageStyle, GeneratedType generatedType, GeneratedMethod async,
@@ -67,7 +67,7 @@ internal class TenantIdColumn: MetadataColumn<string>, ISelectableColumn, IEvent
 
     void IStreamTableColumn.GenerateAppendCode(GeneratedMethod method, int index)
     {
-        method.SetParameterFromMember<StreamAction>(index, x => x.TenantId);
+        method.SetParameterFromMember<StreamAction>(index, static x => x.TenantId);
     }
 
     void IStreamTableColumn.GenerateSelectorCodeAsync(GeneratedMethod method, int index)

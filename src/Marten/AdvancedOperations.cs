@@ -191,9 +191,9 @@ public class AdvancedOperations
             .Options
             .Projections
             .All
-            .Where(x => x.Lifecycle == ProjectionLifecycle.Async)
-            .SelectMany(x => x.Shards())
-            .Select(x => x.Name)
+            .Where(static x => x.Lifecycle == ProjectionLifecycle.Async)
+            .SelectMany(static x => x.Shards())
+            .Select(static x => x.Name)
             .ToList();
     }
 

@@ -239,7 +239,7 @@ internal class AutoClosingLifetime: ConnectionLifetimeBase, IConnectionLifetime,
                 }
 
                 Logger.LogFailure(new NpgsqlCommand(), e);
-                pages.SelectMany(x => x.Operations).OfType<IExceptionTransform>()
+                pages.SelectMany(static x => x.Operations).OfType<IExceptionTransform>()
                     .Concat(MartenExceptionTransformer.Transforms).TransformAndThrow(e);
             }
 
@@ -328,7 +328,7 @@ internal class AutoClosingLifetime: ConnectionLifetimeBase, IConnectionLifetime,
                 }
 
                 Logger.LogFailure(new NpgsqlCommand(), e);
-                pages.SelectMany(x => x.Operations).OfType<IExceptionTransform>()
+                pages.SelectMany(static x => x.Operations).OfType<IExceptionTransform>()
                     .Concat(MartenExceptionTransformer.Transforms).TransformAndThrow(e);
             }
 

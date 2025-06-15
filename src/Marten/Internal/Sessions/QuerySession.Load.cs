@@ -137,7 +137,7 @@ public partial class QuerySession
 
         if (storage is IDocumentStorage<T, long> l)
         {
-            return await l.LoadManyAsync(ids.Select(x => (long)x).ToArray(), this, token).ConfigureAwait(false);
+            return await l.LoadManyAsync(ids.Select(static x => (long)x).ToArray(), this, token).ConfigureAwait(false);
         }
 
 

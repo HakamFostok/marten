@@ -46,11 +46,11 @@ internal class ArchiveStreamFunction: Function
 
     private void writeWithPartitioning(TextWriter writer, string argList, string tenantWhere)
     {
-        var eventColumns = new EventsTable(_events).Columns.Where(x => x.Name != IsArchivedColumn.ColumnName)
-            .Select(x => x.Name).Join(", ");
+        var eventColumns = new EventsTable(_events).Columns.Where(static x => x.Name != IsArchivedColumn.ColumnName)
+            .Select(static x => x.Name).Join(", ");
 
-        var streamColumns = new StreamsTable(_events).Columns.Where(x => x.Name != IsArchivedColumn.ColumnName)
-            .Select(x => x.Name).Join(", ");
+        var streamColumns = new StreamsTable(_events).Columns.Where(static x => x.Name != IsArchivedColumn.ColumnName)
+            .Select(static x => x.Name).Join(", ");
 
         writer.WriteLine($@"
 CREATE OR REPLACE FUNCTION {_events.DatabaseSchemaName}.{Name}({argList}) RETURNS VOID LANGUAGE plpgsql AS

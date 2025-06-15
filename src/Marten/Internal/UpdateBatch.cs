@@ -21,7 +21,7 @@ public class UpdateBatch: IUpdateBatch
 
     public IReadOnlyList<Type> DocumentTypes()
     {
-        return _operations.Select(x => x.DocumentType).Where(x => x != null).Distinct().ToList();
+        return _operations.Select(static x => x.DocumentType).Where(static x => x != null).Distinct().ToList();
     }
 
     public Task PostUpdateAsync(IMartenSession session)

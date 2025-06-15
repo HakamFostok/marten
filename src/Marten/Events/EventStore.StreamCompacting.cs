@@ -110,7 +110,7 @@ public class StreamCompactingRequest<T>
         if (!events.Any()) return;
         if (events is [{ Data: Compacted<T> }]) return;
 
-        var sequences = events.Select(x => x.Sequence).Take(events.Count - 1).ToArray();
+        var sequences = events.Select(static x => x.Sequence).Take(events.Count - 1).ToArray();
 
         Version = events.Last().Version;
         Sequence = events.Last().Sequence;

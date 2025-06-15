@@ -111,7 +111,7 @@ internal class DictionaryDeclaration : IDictionaryPart
 
     public string Write()
     {
-        return $"new {typeof(Dictionary<string, object>).FullNameInCode()}{{ {Parts.Select(x => x.Write()).Join(", ")} }}";
+        return $"new {typeof(Dictionary<string, object>).FullNameInCode()}{{ {Parts.Select(static x => x.Write()).Join(", ")} }}";
     }
 
     public void ReadDictionary(Dictionary<string,object> data, List<DictionaryValueUsage> usages)

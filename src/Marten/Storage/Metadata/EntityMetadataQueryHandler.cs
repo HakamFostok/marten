@@ -42,7 +42,7 @@ internal class EntityMetadataQueryHandler: IQueryHandler<DocumentMetadata>
     {
         sql.Append("select id, ");
 
-        var fields = StringExtensions.Join(_columns.Select(x => x.Name), ", ");
+        var fields = StringExtensions.Join(_columns.Select(static x => x.Name), ", ");
 
         sql.Append(fields);
 

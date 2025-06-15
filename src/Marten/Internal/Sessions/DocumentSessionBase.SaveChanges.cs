@@ -96,7 +96,7 @@ public abstract partial class DocumentSessionBase
 
     private IEnumerable<Type> operationDocumentTypes()
     {
-        return _workTracker.Operations().Select(x => x.DocumentType).Where(x => x != null).Distinct();
+        return _workTracker.Operations().Select(static x => x.DocumentType).Where(static x => x != null).Distinct();
     }
 
     internal record PagesExecution(IReadOnlyList<OperationPage> Pages, IConnectionLifetime Connection)
@@ -134,7 +134,7 @@ public abstract partial class DocumentSessionBase
             }
             catch (Exception e)
             {
-                pages.SelectMany(x => x.Operations).OfType<IExceptionTransform>().Concat(MartenExceptionTransformer.Transforms).TransformAndThrow(e);
+                pages.SelectMany(static x => x.Operations).OfType<IExceptionTransform>().Concat(MartenExceptionTransformer.Transforms).TransformAndThrow(e);
             }
 
             if (execution.Exceptions.Count == 1)

@@ -83,7 +83,7 @@ public abstract partial class Statement: IWhereFragmentHolder
     protected virtual void compileAnySubQueries(IMartenSession session)
     {
         if (Wheres.OfType<ISubQueryFilter>().Any() ||
-            Wheres.OfType<CompoundWhereFragment>().Any(x => x.Children.OfType<ISubQueryFilter>().Any()))
+            Wheres.OfType<CompoundWhereFragment>().Any(static x => x.Children.OfType<ISubQueryFilter>().Any()))
         {
             throw new BadLinqExpressionException("Sub Query filters are not supported for this operation");
         }

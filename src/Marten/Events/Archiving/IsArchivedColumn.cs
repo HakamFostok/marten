@@ -18,12 +18,12 @@ internal class IsArchivedColumn: TableColumn, IEventTableColumn
 
     public void GenerateSelectorCodeSync(GeneratedMethod method, EventGraph graph, int index)
     {
-        method.AssignMemberFromReader<IEvent>(null, index, x => x.IsArchived);
+        method.AssignMemberFromReader<IEvent>(null, index, static x => x.IsArchived);
     }
 
     public void GenerateSelectorCodeAsync(GeneratedMethod method, EventGraph graph, int index)
     {
-        method.AssignMemberFromReaderAsync<IEvent>(null, index, x => x.IsArchived);
+        method.AssignMemberFromReaderAsync<IEvent>(null, index, static x => x.IsArchived);
     }
 
     public void GenerateAppendCode(GeneratedMethod method, EventGraph graph, int index, AppendMode full)

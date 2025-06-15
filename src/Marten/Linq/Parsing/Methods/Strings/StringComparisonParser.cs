@@ -88,9 +88,9 @@ internal abstract class StringComparisonParser: IMethodCallParser
     protected bool AreMethodsEqual(MethodInfo method1, MethodInfo method2)
     {
         return method1.DeclaringType == method2.DeclaringType && method1.Name == method2.Name
-                                                              && method1.GetParameters().Select(p => p.ParameterType)
+                                                              && method1.GetParameters().Select(static p => p.ParameterType)
                                                                   .SequenceEqual(method2.GetParameters()
-                                                                      .Select(p => p.ParameterType));
+                                                                      .Select(static p => p.ParameterType));
     }
 
     public static string EscapeValue(string raw)

@@ -19,8 +19,8 @@ internal class StringEndsWith: StringComparisonParser
     };
 
     public StringEndsWith(): base(
-        ReflectionHelper.GetMethod<string>(s => s.EndsWith(null))!,
-        ReflectionHelper.GetMethod<string>(s => s.EndsWith(null, StringComparison.CurrentCulture))!
+        ReflectionHelper.GetMethod<string>(static s => s.EndsWith(null))!,
+        ReflectionHelper.GetMethod<string>(static s => s.EndsWith(null, StringComparison.CurrentCulture))!
     )
     {
     }

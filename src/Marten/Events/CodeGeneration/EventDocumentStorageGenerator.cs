@@ -124,20 +124,20 @@ internal static class EventDocumentStorageGenerator
         configureCommand.Frames.Code($"var parameterBuilder = {{0}}.{nameof(CommandBuilder.CreateGroupedParameterBuilder)}();", Use.Type<ICommandBuilder>());
 
         configureCommand.Frames.AppendSql("set version = ");
-        configureCommand.SetParameterFromMember<StreamAction>(0, x => x.Version);
+        configureCommand.SetParameterFromMember<StreamAction>(0, static x => x.Version);
 
         configureCommand.Frames.AppendSql(" where id = ");
         if (graph.StreamIdentity == StreamIdentity.AsGuid)
         {
-            configureCommand.SetParameterFromMember<StreamAction>(1, x => x.Id);
+            configureCommand.SetParameterFromMember<StreamAction>(1, static x => x.Id);
         }
         else
         {
-            configureCommand.SetParameterFromMember<StreamAction>(1, x => x.Key);
+            configureCommand.SetParameterFromMember<StreamAction>(1, static x => x.Key);
         }
 
         configureCommand.Frames.AppendSql(" and version = ");
-        configureCommand.SetParameterFromMember<StreamAction>(2, x => x.ExpectedVersionOnServer);
+        configureCommand.SetParameterFromMember<StreamAction>(2, static x => x.ExpectedVersionOnServer);
 
         if (graph.TenancyStyle == TenancyStyle.Conjoined)
         {
@@ -188,44 +188,44 @@ internal static class EventDocumentStorageGenerator
         var async = streamQueryHandlerType.MethodFor("ResolveAsync");
 
 
-        sync.Frames.Add(new ConstructorFrame<StreamState>(() => new StreamState()));
-        async.Frames.Add(new ConstructorFrame<StreamState>(() => new StreamState()));
+        sync.Frames.Add(new ConstructorFrame<StreamState>(static () => new StreamState()));
+        async.Frames.Add(new ConstructorFrame<StreamState>(static () => new StreamState()));
 
         if (graph.StreamIdentity == StreamIdentity.AsGuid)
         {
-            sync.AssignMemberFromReader<StreamState>(streamQueryHandlerType, 0, x => x.Id);
-            async.AssignMemberFromReaderAsync<StreamState>(streamQueryHandlerType, 0, x => x.Id);
+            sync.AssignMemberFromReader<StreamState>(streamQueryHandlerType, 0, static x => x.Id);
+            async.AssignMemberFromReaderAsync<StreamState>(streamQueryHandlerType, 0, static x => x.Id);
         }
         else
         {
-            sync.AssignMemberFromReader<StreamState>(streamQueryHandlerType, 0, x => x.Key);
-            async.AssignMemberFromReaderAsync<StreamState>(streamQueryHandlerType, 0, x => x.Key);
+            sync.AssignMemberFromReader<StreamState>(streamQueryHandlerType, 0, static x => x.Key);
+            async.AssignMemberFromReaderAsync<StreamState>(streamQueryHandlerType, 0, static x => x.Key);
         }
 
-        sync.AssignMemberFromReader<StreamState>(streamQueryHandlerType, 1, x => x.Version);
-        async.AssignMemberFromReaderAsync<StreamState>(streamQueryHandlerType, 1, x => x.Version);
+        sync.AssignMemberFromReader<StreamState>(streamQueryHandlerType, 1, static x => x.Version);
+        async.AssignMemberFromReaderAsync<StreamState>(streamQueryHandlerType, 1, static x => x.Version);
 
-        sync.Frames.Call<StreamStateQueryHandler>(x => x.SetAggregateType(null, null, null), call =>
+        sync.Frames.Call<StreamStateQueryHandler>(static x => x.SetAggregateType(null, null, null), static call =>
         {
             call.IsLocal = true;
         });
 
 #pragma warning disable 4014
         async.Frames.Call<StreamStateQueryHandler>(
-            x => x.SetAggregateTypeAsync(null, null, null, CancellationToken.None), call =>
+            static x => x.SetAggregateTypeAsync(null, null, null, CancellationToken.None), static call =>
 #pragma warning restore 4014
             {
                 call.IsLocal = true;
             });
 
-        sync.AssignMemberFromReader<StreamState>(streamQueryHandlerType, 3, x => x.LastTimestamp);
-        async.AssignMemberFromReaderAsync<StreamState>(streamQueryHandlerType, 3, x => x.LastTimestamp);
+        sync.AssignMemberFromReader<StreamState>(streamQueryHandlerType, 3, static x => x.LastTimestamp);
+        async.AssignMemberFromReaderAsync<StreamState>(streamQueryHandlerType, 3, static x => x.LastTimestamp);
 
-        sync.AssignMemberFromReader<StreamState>(streamQueryHandlerType, 4, x => x.Created);
-        async.AssignMemberFromReaderAsync<StreamState>(streamQueryHandlerType, 4, x => x.Created);
+        sync.AssignMemberFromReader<StreamState>(streamQueryHandlerType, 4, static x => x.Created);
+        async.AssignMemberFromReaderAsync<StreamState>(streamQueryHandlerType, 4, static x => x.Created);
 
-        sync.AssignMemberFromReader<StreamState>(streamQueryHandlerType, 5, x => x.IsArchived);
-        async.AssignMemberFromReaderAsync<StreamState>(streamQueryHandlerType, 5, x => x.IsArchived);
+        sync.AssignMemberFromReader<StreamState>(streamQueryHandlerType, 5, static x => x.IsArchived);
+        async.AssignMemberFromReaderAsync<StreamState>(streamQueryHandlerType, 5, static x => x.IsArchived);
 
         sync.Frames.Return(typeof(StreamState));
         async.Frames.Return(typeof(StreamState));
@@ -278,7 +278,7 @@ internal static class EventDocumentStorageGenerator
         var columns = new EventsTable(graph).SelectColumns()
 
             // Hokey, use an explicit model for writeable vs readable columns some day
-            .Where(x => !(x is IsArchivedColumn)).ToList();
+            .Where(static x => !(x is IsArchivedColumn)).ToList();
 
         // Hokey, but we need to move Sequence to the end
         var sequence = columns.OfType<SequenceColumn>().Single();
@@ -286,7 +286,7 @@ internal static class EventDocumentStorageGenerator
         columns.Add(sequence);
 
         var sql =
-            $"insert into {graph.DatabaseSchemaName}.mt_events ({columns.Select(x => x.Name).Join(", ")}) values (";
+            $"insert into {graph.DatabaseSchemaName}.mt_events ({columns.Select(static x => x.Name).Join(", ")}) values (";
 
         configure.Frames.AppendSql(sql);
 
@@ -359,11 +359,11 @@ internal static class EventDocumentStorageGenerator
         var columns = new StreamsTable(graph)
             .Columns
             .OfType<IStreamTableColumn>()
-            .Where(x => x.Writes)
+            .Where(static x => x.Writes)
             .ToArray();
 
         var sql =
-            $"insert into {graph.DatabaseSchemaName}.mt_streams ({columns.Select(x => x.Name).Join(", ")}) values (";
+            $"insert into {graph.DatabaseSchemaName}.mt_streams ({columns.Select(static x => x.Name).Join(", ")}) values (";
 
 
         var configureCommand = operationType.MethodFor("ConfigureCommand");

@@ -63,7 +63,7 @@ public partial class MartenDatabase: PostgresqlDatabase, IMartenDatabase
     public async Task<IReadOnlyList<DbObjectName>> DocumentTables()
     {
         var tables = await SchemaTables().ConfigureAwait(false);
-        return tables.Where(x => x.Name.StartsWith(SchemaConstants.TablePrefix)).ToList();
+        return tables.Where(static x => x.Name.StartsWith(SchemaConstants.TablePrefix)).ToList();
     }
 
     public async Task<IReadOnlyList<DbObjectName>> Functions()

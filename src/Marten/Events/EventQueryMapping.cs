@@ -21,36 +21,36 @@ public class EventQueryMapping: DocumentMapping
 
         TableName = new PostgresqlObjectName(DatabaseSchemaName, "mt_events");
 
-        registerQueryableMember(x => x.Id, "id");
-        registerQueryableMember(x => x.Sequence, "seq_id");
+        registerQueryableMember(static x => x.Id, "id");
+        registerQueryableMember(static x => x.Sequence, "seq_id");
         if (storeOptions.Events.StreamIdentity == StreamIdentity.AsGuid)
         {
-            registerQueryableMember(x => x.StreamId, "stream_id");
+            registerQueryableMember(static x => x.StreamId, "stream_id");
         }
         else
         {
-            registerQueryableMember(x => x.StreamKey, "stream_id");
+            registerQueryableMember(static x => x.StreamKey, "stream_id");
         }
 
-        registerQueryableMember(x => x.Version, "version");
-        registerQueryableMember(x => x.Timestamp, "timestamp");
+        registerQueryableMember(static x => x.Version, "version");
+        registerQueryableMember(static x => x.Timestamp, "timestamp");
 
         // Is archived needs to be a little different
-        var member = ReflectionHelper.GetProperty<IEvent>(x => x.IsArchived);
+        var member = ReflectionHelper.GetProperty<IEvent>(static x => x.IsArchived);
         QueryMembers.ReplaceMember(member, new IsArchivedMember());
 
-        registerQueryableMember(x => x.EventTypeName, "type");
-        registerQueryableMember(x => x.DotNetTypeName, SchemaConstants.DotNetTypeColumn);
+        registerQueryableMember(static x => x.EventTypeName, "type");
+        registerQueryableMember(static x => x.DotNetTypeName, SchemaConstants.DotNetTypeColumn);
 
 
         if (storeOptions.EventGraph.Metadata.CorrelationId.Enabled)
         {
-            registerQueryableMember(x => x.CorrelationId, storeOptions.EventGraph.Metadata.CorrelationId.Name);
+            registerQueryableMember(static x => x.CorrelationId, storeOptions.EventGraph.Metadata.CorrelationId.Name);
         }
 
         if (storeOptions.EventGraph.Metadata.CausationId.Enabled)
         {
-            registerQueryableMember(x => x.CausationId, storeOptions.EventGraph.Metadata.CausationId.Name);
+            registerQueryableMember(static x => x.CausationId, storeOptions.EventGraph.Metadata.CausationId.Name);
         }
     }
 

@@ -51,7 +51,7 @@ internal class UpsertFunction: Function
 
         Arguments.Add(new DocJsonBodyArgument());
 
-        Arguments.AddRange(mapping.DuplicatedFields.Where(x => !x.OnlyForSearching).Select(x => x.UpsertArgument));
+        Arguments.AddRange(mapping.DuplicatedFields.Where(static x => !x.OnlyForSearching).Select(static x => x.UpsertArgument));
 
         // These two arguments need to be added this way
         if (mapping.Metadata.Version.Enabled)
@@ -111,7 +111,7 @@ internal class UpsertFunction: Function
             _andTenantVersionWhereClause = $" and {_tenantVersionWhereClause}";
         }
 
-        _primaryKeyFields = table.Columns.Where(x => x.IsPrimaryKey).Select(x => x.Name).Join(", ");
+        _primaryKeyFields = table.Columns.Where(static x => x.IsPrimaryKey).Select(static x => x.Name).Join(", ");
     }
 
     public void AddIfActive(MetadataColumn column)
@@ -126,17 +126,17 @@ internal class UpsertFunction: Function
     {
         var ordered = OrderedArguments();
 
-        var argList = ordered.Select(x => x.ArgumentDeclaration()).Join(", ");
+        var argList = ordered.Select(static x => x.ArgumentDeclaration()).Join(", ");
 
 
         var systemUpdates = _mapping.Metadata.LastModified.Enabled
             ? new[] { $"{SchemaConstants.LastModifiedColumn} = transaction_timestamp()" }
             : Array.Empty<string>();
-        var updates = ordered.Where(x => x.Column != "id" && x.Column.IsNotEmpty())
-            .Select(x => $"\"{x.Column}\" = {x.Arg}").Concat(systemUpdates).Join(", ");
+        var updates = ordered.Where(static x => x.Column != "id" && x.Column.IsNotEmpty())
+            .Select(static x => $"\"{x.Column}\" = {x.Arg}").Concat(systemUpdates).Join(", ");
 
-        var insertColumns = ordered.Where(x => x.Column.IsNotEmpty()).Select(x => $"\"{x.Column}\"").ToList();
-        var valueListColumns = ordered.Where(x => x.Column.IsNotEmpty()).Select(x => x.Arg).ToList();
+        var insertColumns = ordered.Where(static x => x.Column.IsNotEmpty()).Select(static x => $"\"{x.Column}\"").ToList();
+        var valueListColumns = ordered.Where(static x => x.Column.IsNotEmpty()).Select(static x => x.Arg).ToList();
 
         if (_mapping.Metadata.LastModified.Enabled)
         {
@@ -154,17 +154,17 @@ internal class UpsertFunction: Function
 
         var whereClauses = new List<string>();
 
-        if (Arguments.Any(x => x is RevisionArgument) && !_disableConcurrency)
+        if (Arguments.Any(static x => x is RevisionArgument) && !_disableConcurrency)
         {
             whereClauses.Add($"revision > {_tableName.QualifiedName}.{SchemaConstants.VersionColumn}");
         }
 
-        if (Arguments.Any(x => x is CurrentVersionArgument) && !_disableConcurrency)
+        if (Arguments.Any(static x => x is CurrentVersionArgument) && !_disableConcurrency)
         {
             whereClauses.Add($"{_tableName.QualifiedName}.{SchemaConstants.VersionColumn} = current_version");
         }
 
-        if (Arguments.Any(x => x is TenantIdArgument))
+        if (Arguments.Any(static x => x is TenantIdArgument))
         {
             whereClauses.Add(_tenantWhereClause);
         }
@@ -267,6 +267,6 @@ $function$;
 
     public UpsertArgument[] OrderedArguments()
     {
-        return Arguments.OrderBy(x => x.Arg).ToArray();
+        return Arguments.OrderBy(static x => x.Arg).ToArray();
     }
 }

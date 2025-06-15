@@ -10,7 +10,7 @@ namespace Marten.Storage.Metadata;
 
 internal class LastModifiedColumn: MetadataColumn<DateTimeOffset>, ISelectableColumn
 {
-    public LastModifiedColumn(): base(SchemaConstants.LastModifiedColumn, x => x.LastModified)
+    public LastModifiedColumn(): base(SchemaConstants.LastModifiedColumn, static x => x.LastModified)
     {
         DefaultExpression = "(transaction_timestamp())";
         Type = "timestamp with time zone";

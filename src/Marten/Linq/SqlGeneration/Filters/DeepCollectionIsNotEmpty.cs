@@ -20,7 +20,7 @@ internal class DeepCollectionIsNotEmpty: ISqlFragment
     public void Apply(ICommandBuilder builder)
     {
         builder.Append("jsonb_array_length(jsonb_path_query_array(d.data, '$");
-        foreach (var member in Path.Where(x => x.JsonPathSegment.IsNotEmpty()))
+        foreach (var member in Path.Where(static x => x.JsonPathSegment.IsNotEmpty()))
         {
             builder.Append(".");
             builder.Append(member.JsonPathSegment);

@@ -154,10 +154,10 @@ public class SystemTextJsonSerializer: ISerializer
                     = _clean.PropertyNamingPolicy
                         = _withTypes.PropertyNamingPolicy = jsonNamingPolicy;
 
-            _options.Converters.RemoveAll(x => x is JsonStringEnumConverter);
-            _optionsDeserialize.Converters.RemoveAll(x => x is JsonStringEnumConverter);
-            _clean.Converters.RemoveAll(x => x is JsonStringEnumConverter);
-            _withTypes.Converters.RemoveAll(x => x is JsonStringEnumConverter);
+            _options.Converters.RemoveAll(static x => x is JsonStringEnumConverter);
+            _optionsDeserialize.Converters.RemoveAll(static x => x is JsonStringEnumConverter);
+            _clean.Converters.RemoveAll(static x => x is JsonStringEnumConverter);
+            _withTypes.Converters.RemoveAll(static x => x is JsonStringEnumConverter);
 
             if (_enumStorage == EnumStorage.AsString)
             {

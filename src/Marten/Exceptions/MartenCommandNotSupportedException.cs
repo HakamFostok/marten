@@ -82,13 +82,13 @@ internal sealed class KnownNotSupportedExceptionCause
     internal static readonly KnownNotSupportedExceptionCause ToTsvectorOnJsonb = new(
         "Full Text Search needs at least Postgres version 10.",
         NotSupportedReason.FullTextSearchNeedsAtLeastPostgresVersion10,
-        e => e is PostgresException pe && pe.SqlState == PostgresErrorCodes.UndefinedFunction &&
+        static e => e is PostgresException pe && pe.SqlState == PostgresErrorCodes.UndefinedFunction &&
              new Regex(@"function to_tsvector\((?:regconfig, )?jsonb\) does not exist").IsMatch(pe.Message));
 
     internal static readonly KnownNotSupportedExceptionCause WebStyleSearch = new(
         "Full Text Search needs at least Postgres version 10.",
         NotSupportedReason.WebStyleSearchNeedsAtLeastPostgresVersion11,
-        e => e is PostgresException pe && pe.SqlState == PostgresErrorCodes.UndefinedFunction &&
+        static e => e is PostgresException pe && pe.SqlState == PostgresErrorCodes.UndefinedFunction &&
              new Regex(@"function websearch_to_tsquery\((?:regconfig, )?text\) does not exist").IsMatch(pe.Message));
 
     internal static readonly KnownNotSupportedExceptionCause[] KnownCauses = { ToTsvectorOnJsonb, WebStyleSearch };

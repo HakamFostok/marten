@@ -25,7 +25,7 @@ internal class EventTypeColumn: TableColumn, IEventTableColumn
 
     public void GenerateAppendCode(GeneratedMethod method, EventGraph graph, int index, AppendMode full)
     {
-        method.SetParameterFromMember<IEvent>(index, x => x.EventTypeName);
+        method.SetParameterFromMember<IEvent>(index, static x => x.EventTypeName);
     }
 
     public string ValueSql(EventGraph graph, AppendMode mode)

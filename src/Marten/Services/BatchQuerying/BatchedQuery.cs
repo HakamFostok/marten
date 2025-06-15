@@ -90,7 +90,7 @@ internal class BatchedQuery: IBatchedQuery, IBatchEvents
         foreach (var type in _documentTypes.Distinct())
             await Parent.Database.EnsureStorageExistsAsync(type, token).ConfigureAwait(false);
 
-        var command = Parent.BuildCommand(_items.Select(x => x.Handler));
+        var command = Parent.BuildCommand(_items.Select(static x => x.Handler));
 
         await using var reader = await Parent.ExecuteReaderAsync(command, token).ConfigureAwait(false);
         await _items[0].ReadAsync(reader, Parent, token).ConfigureAwait(false);

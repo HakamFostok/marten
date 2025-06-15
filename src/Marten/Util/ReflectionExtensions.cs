@@ -9,7 +9,7 @@ internal static class ReflectionExtensions
 {
     public static string ToTableAlias(this MemberInfo[] members)
     {
-        return members.Select(x => x.ToTableAlias()).Join("_");
+        return members.Select(static x => x.ToTableAlias()).Join("_");
     }
 
     public static string ToTableAlias(this MemberInfo member)

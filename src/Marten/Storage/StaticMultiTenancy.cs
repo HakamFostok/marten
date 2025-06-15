@@ -130,7 +130,7 @@ public class StaticMultiTenancy: Tenancy, ITenancy, IStaticMultiTenancy
 
     public ValueTask<IReadOnlyList<IDatabase>> BuildDatabases()
     {
-        var databases = _databases.Enumerate().Select(x => x.Value).ToList();
+        var databases = _databases.Enumerate().Select(static x => x.Value).ToList();
         return new ValueTask<IReadOnlyList<IDatabase>>(databases);
     }
 

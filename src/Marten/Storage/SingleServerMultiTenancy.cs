@@ -143,7 +143,7 @@ internal class SingleServerMultiTenancy: SingleServerDatabaseCollection<MartenDa
         get
         {
             _default = _default
-                ??= _tenants.Enumerate().Select(x => x.Value).FirstOrDefault();
+                ??= _tenants.Enumerate().Select(static x => x.Value).FirstOrDefault();
 
             return _default;
         }

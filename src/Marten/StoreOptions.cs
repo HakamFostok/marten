@@ -48,7 +48,7 @@ public partial class StoreOptions: IReadOnlyStoreOptions, IMigrationLogger, IDoc
     internal const string? NoConnectionMessage = "No tenancy is configured! Ensure that you provided connection string in `AddMarten` method or called `UseNpgsqlDataSource`";
 
     internal static readonly Func<string, NpgsqlDataSourceBuilder> DefaultNpgsqlDataSourceBuilderFactory =
-        connectionString => new NpgsqlDataSourceBuilder(connectionString);
+        static connectionString => new NpgsqlDataSourceBuilder(connectionString);
 
     internal Func<string, NpgsqlDataSourceBuilder> NpgsqlDataSourceBuilderFactory
     {
@@ -779,7 +779,7 @@ public partial class StoreOptions: IReadOnlyStoreOptions, IMigrationLogger, IDoc
         /// <returns></returns>
         public PoliciesExpression AllDocumentsAreMultiTenanted()
         {
-            return ForAllDocuments(mapping =>
+            return ForAllDocuments(static mapping =>
             {
                 if (mapping.DocumentType.HasAttribute<SingleTenantedAttribute>()) return;
                 if (mapping.DocumentType == typeof(DeadLetterEvent)) return;
@@ -857,7 +857,7 @@ public partial class StoreOptions: IReadOnlyStoreOptions, IMigrationLogger, IDoc
         /// <returns></returns>
         public PoliciesExpression AllDocumentsSoftDeleted()
         {
-            return ForAllDocuments(_ => _.DeleteStyle = DeleteStyle.SoftDelete);
+            return ForAllDocuments(static _ => _.DeleteStyle = DeleteStyle.SoftDelete);
         }
 
         /// <summary>
@@ -868,7 +868,7 @@ public partial class StoreOptions: IReadOnlyStoreOptions, IMigrationLogger, IDoc
         /// <exception cref="NotImplementedException"></exception>
         public PoliciesExpression AllDocumentsSoftDeletedWithPartitioning()
         {
-            return ForAllDocuments(_ =>
+            return ForAllDocuments(static _ =>
             {
                 _.PartitionByDeleted();
                 _.DeleteStyle = DeleteStyle.SoftDelete;
@@ -882,7 +882,7 @@ public partial class StoreOptions: IReadOnlyStoreOptions, IMigrationLogger, IDoc
         /// </summary>
         public PoliciesExpression DisableInformationalFields()
         {
-            return ForAllDocuments(x =>
+            return ForAllDocuments(static x =>
             {
                 x.Metadata.LastModified.Enabled = false;
                 x.Metadata.DotNetType.Enabled = false;
@@ -896,7 +896,7 @@ public partial class StoreOptions: IReadOnlyStoreOptions, IMigrationLogger, IDoc
         /// <returns></returns>
         public PoliciesExpression AllDocumentsEnforceOptimisticConcurrency()
         {
-            return ForAllDocuments(x =>
+            return ForAllDocuments(static x =>
             {
                 x.UseOptimisticConcurrency = true;
             });

@@ -68,7 +68,7 @@ public class MatchesJsonPathParser: IMethodCallParser
     public ISqlFragment Parse(IQueryableMemberCollection memberCollection, IReadOnlyStoreOptions options,
         MethodCallExpression expression)
     {
-        var arguments = expression.Arguments[2].Value().As<object[]>().Select(x => new CommandParameter(x)).ToArray();
+        var arguments = expression.Arguments[2].Value().As<object[]>().Select(static x => new CommandParameter(x)).ToArray();
 
         return new LiteralSqlWithJsonPath(expression.Arguments[1].Value().As<string>(), arguments);
     }

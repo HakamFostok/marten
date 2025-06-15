@@ -119,7 +119,7 @@ public class MasterTableTenancy: ITenancy, ITenancyWithMasterDatabase
             await conn.CloseAsync().ConfigureAwait(false);
         }
 
-        var list = _databases.Enumerate().Select(x => x.Value).OfType<IDatabase>().ToList();
+        var list = _databases.Enumerate().Select(static x => x.Value).OfType<IDatabase>().ToList();
 
         list.Insert(0, _tenantDatabase.Value);
         return list;
@@ -334,7 +334,7 @@ public class MasterTableTenancy: ITenancy, ITenancyWithMasterDatabase
     {
         // TODO -- watch out for duplicate databases!!!
         await BuildDatabases().ConfigureAwait(false);
-        var list = _databases.Enumerate().Select(pair =>
+        var list = _databases.Enumerate().Select(static pair =>
         {
             var descriptor = pair.Value.Describe();
             descriptor.TenantIds.Add(pair.Key);

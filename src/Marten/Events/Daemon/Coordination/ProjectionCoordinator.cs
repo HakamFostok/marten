@@ -226,7 +226,7 @@ public class ProjectionCoordinator: IProjectionCoordinator
 
             try
             {
-                if (_daemons.Enumerate().Any(x => x.Value.HasAnyPaused()))
+                if (_daemons.Enumerate().Any(static x => x.Value.HasAnyPaused()))
                 {
                     await Task.Delay(_options.Projections.AgentPauseTime, stoppingToken).ConfigureAwait(false);
                 }

@@ -39,7 +39,7 @@ internal sealed class EventLoader: IEventLoader
         var schemaName = store.Options.Events.DatabaseSchemaName;
 
         var builder = new CommandBuilder();
-        builder.Append($"select {_storage.SelectFields().Select(x => "d." + x).Join(", ")}, s.type as stream_type");
+        builder.Append($"select {_storage.SelectFields().Select(static x => "d." + x).Join(", ")}, s.type as stream_type");
         builder.Append(
             $" from {schemaName}.mt_events as d inner join {schemaName}.mt_streams as s on d.stream_id = s.id");
 

@@ -7,7 +7,7 @@ namespace Marten.Storage.Metadata;
 
 internal class DocumentTypeColumn: MetadataColumn<string>, ISelectableColumn
 {
-    public DocumentTypeColumn(DocumentMapping mapping): base(SchemaConstants.DocumentTypeColumn, x => x.DocumentType)
+    public DocumentTypeColumn(DocumentMapping mapping): base(SchemaConstants.DocumentTypeColumn, static x => x.DocumentType)
     {
         DefaultExpression = $"'{mapping.AliasFor(mapping.DocumentType)}'";
     }

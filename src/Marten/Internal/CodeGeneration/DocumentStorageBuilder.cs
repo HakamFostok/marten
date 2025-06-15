@@ -162,7 +162,7 @@ internal class DocumentStorageBuilder
 
     private static void writeNotImplementedStubs(GeneratedType type)
     {
-        var missing = type.Methods.Where(x => !x.Frames.Any()).Select(x => x.MethodName);
+        var missing = type.Methods.Where(static x => !x.Frames.Any()).Select(static x => x.MethodName);
         if (missing.Any())
         {
             throw new Exception("Missing methods: " + missing.Join(", "));

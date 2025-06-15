@@ -232,7 +232,7 @@ public class DocumentMapping: IDocumentMapping, IDocumentType
     [IgnoreDescription]
     public SubClasses SubClasses { get; }
 
-    public string SubClassTypes => SubClasses.Any() ? SubClasses.Select(x => x.DocumentType.FullNameInCode()).Join(", ") : "None";
+    public string SubClassTypes => SubClasses.Any() ? SubClasses.Select(static x => x.DocumentType.FullNameInCode()).Join(", ") : "None";
 
     public DbObjectName UpsertFunction =>
         new PostgresqlObjectName(DatabaseSchemaName, $"{SchemaConstants.UpsertPrefix}{_alias}");
@@ -403,15 +403,15 @@ public class DocumentMapping: IDocumentMapping, IDocumentType
         // 3) Id Property
         // 4) Id field
         var propertiesWithTypeValidForId = GetProperties(documentType)
-            .Where(p => IsValidIdentityType(p.PropertyType));
+            .Where(static p => IsValidIdentityType(p.PropertyType));
         var fieldsWithTypeValidForId = documentType.GetFields()
-            .Where(f => IsValidIdentityType(f.FieldType));
-        return propertiesWithTypeValidForId.FirstOrDefault(x => x.HasAttribute<IdentityAttribute>())
-               ?? fieldsWithTypeValidForId.FirstOrDefault(x => x.HasAttribute<IdentityAttribute>())
+            .Where(static f => IsValidIdentityType(f.FieldType));
+        return propertiesWithTypeValidForId.FirstOrDefault(static x => x.HasAttribute<IdentityAttribute>())
+               ?? fieldsWithTypeValidForId.FirstOrDefault(static x => x.HasAttribute<IdentityAttribute>())
                ?? (MemberInfo)propertiesWithTypeValidForId
-                   .FirstOrDefault(x => x.Name.Equals("id", StringComparison.OrdinalIgnoreCase))
+                   .FirstOrDefault(static x => x.Name.Equals("id", StringComparison.OrdinalIgnoreCase))
                ?? fieldsWithTypeValidForId
-                   .FirstOrDefault(x => x.Name.Equals("id", StringComparison.OrdinalIgnoreCase));
+                   .FirstOrDefault(static x => x.Name.Equals("id", StringComparison.OrdinalIgnoreCase));
     }
 
     private static PropertyInfo[] GetProperties(Type type)
@@ -724,7 +724,7 @@ public class DocumentMapping: IDocumentMapping, IDocumentType
         if (member is not QueryableMember)
         {
             throw new ArgumentOutOfRangeException(nameof(members),
-                $"{members.Select(x => x.Name).Join(".")} of type {member.MemberType.FullNameInCode()} cannot be used as a Duplicated Field by Marten");
+                $"{members.Select(static x => x.Name).Join(".")} of type {member.MemberType.FullNameInCode()} cannot be used as a Duplicated Field by Marten");
         }
 
         var enumStorage = StoreOptions.Advanced.DuplicatedFieldEnumStorage;
@@ -907,7 +907,7 @@ public class DocumentMapping<T>: DocumentMapping
         TenancyScope tenancyScope = TenancyScope.Global, params Expression<Func<T, object>>[] expressions)
     {
         var members = expressions
-            .Select(e =>
+            .Select(static e =>
             {
                 var visitor = new Marten.Linq.Parsing.MemberFinder();
                 visitor.Visit(e);
@@ -1003,10 +1003,10 @@ internal static class ForeignKeyExtensions
             return;
 
         foreignKey.ColumnNames = new string[] { TenantIdColumn.Name }
-            .Concat(foreignKey.ColumnNames.Where(x => x != TenantIdColumn.Name)).ToArray();
+            .Concat(foreignKey.ColumnNames.Where(static x => x != TenantIdColumn.Name)).ToArray();
 
         foreignKey.LinkedNames = new string[] { TenantIdColumn.Name }
-            .Concat(foreignKey.LinkedNames.Where(x => x != TenantIdColumn.Name)).ToArray();
+            .Concat(foreignKey.LinkedNames.Where(static x => x != TenantIdColumn.Name)).ToArray();
 
         foreignKey.Name = $"{mapping.TableName.Name}_{foreignKey.ColumnNames.Join("_")}_fkey";
     }

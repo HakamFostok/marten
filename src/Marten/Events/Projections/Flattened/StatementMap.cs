@@ -59,14 +59,14 @@ public class StatementMap<T>: IEventHandler
         {
             _hasBuiltPK = true;
             var setter = events.StreamIdentity == StreamIdentity.AsGuid
-                ? (IParameterSetter<IEvent>)new ParameterSetter<IEvent, Guid>(e => e.StreamId)
-                : new ParameterSetter<IEvent, string>(e => e.StreamKey);
+                ? (IParameterSetter<IEvent>)new ParameterSetter<IEvent, Guid>(static e => e.StreamId)
+                : new ParameterSetter<IEvent, string>(static e => e.StreamKey);
 
             _setters.Insert(0, setter);
         }
 
         createFunctionName(table);
-        var parameters = _setters.Select(x => "?").Join(", ");
+        var parameters = _setters.Select(static x => "?").Join(", ");
         _sql = $"select {_functionIdentifier}({parameters})";
     }
 

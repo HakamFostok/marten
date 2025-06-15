@@ -43,7 +43,7 @@ public class SelectorBuilder
         generateIdentityMapAndTrackingCode(sync, async, _style);
 
         sync.Frames.Return(_mapping.DocumentType);
-        if (async.Frames.Any(x => x.IsAsync))
+        if (async.Frames.Any(static x => x.IsAsync))
         {
             async.Frames.Return(_mapping.DocumentType);
         }

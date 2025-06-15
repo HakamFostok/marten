@@ -610,7 +610,7 @@ public class MartenRegistry
         /// <returns></returns>
         public DocumentMappingExpression<T> AddSubClassHierarchy()
         {
-            _builder.Alter = m => m.SubClasses.AddHierarchy();
+            _builder.Alter = static m => m.SubClasses.AddHierarchy();
 
             return this;
         }
@@ -674,7 +674,7 @@ public class MartenRegistry
         /// <returns></returns>
         public DocumentMappingExpression<T> SoftDeleted()
         {
-            _builder.Alter = m => m.DeleteStyle = DeleteStyle.SoftDelete;
+            _builder.Alter = static m => m.DeleteStyle = DeleteStyle.SoftDelete;
             return this;
         }
 
@@ -697,7 +697,7 @@ public class MartenRegistry
         /// <returns></returns>
         public DocumentMappingExpression<T> SoftDeletedWithPartitioning()
         {
-            _builder.Alter = m =>
+            _builder.Alter = static m =>
             {
                 m.DeleteStyle = DeleteStyle.SoftDelete;
                 m.PartitionByDeleted();
@@ -740,7 +740,7 @@ public class MartenRegistry
         /// <returns></returns>
         public DocumentMappingExpression<T> MultiTenanted()
         {
-            _builder.Alter = m => m.TenancyStyle = TenancyStyle.Conjoined;
+            _builder.Alter = static m => m.TenancyStyle = TenancyStyle.Conjoined;
             return this;
         }
 
@@ -765,7 +765,7 @@ public class MartenRegistry
         /// <returns></returns>
         public DocumentMappingExpression<T> SingleTenanted()
         {
-            _builder.Alter = m => m.TenancyStyle = TenancyStyle.Single;
+            _builder.Alter = static m => m.TenancyStyle = TenancyStyle.Single;
             return this;
         }
 
@@ -775,7 +775,7 @@ public class MartenRegistry
         /// <returns></returns>
         public DocumentMappingExpression<T> UseIdentityKey()
         {
-            _builder.Alter = m => m.IdStrategy = new IdentityKeyGeneration(m, m.HiloSettings);
+            _builder.Alter = static m => m.IdStrategy = new IdentityKeyGeneration(m, m.HiloSettings);
             return this;
         }
 
@@ -785,7 +785,7 @@ public class MartenRegistry
         /// <returns></returns>
         public DocumentMappingExpression<T> DoNotPartition()
         {
-            _builder.Alter = m =>
+            _builder.Alter = static m =>
             {
                 m.DisablePartitioningIfAny = true;
                 m.Partitioning = null;
@@ -820,73 +820,73 @@ public class MartenRegistry
             /// <summary>
             ///     The current version of this document in the database
             /// </summary>
-            public Column<Guid> Version => new(_parent, m => m.Version);
+            public Column<Guid> Version => new(_parent, static m => m.Version);
 
             /// <summary>
             ///     The current numeric version of this document in the database
             /// </summary>
-            public Column<int> Revision => new(_parent, m => m.Revision);
+            public Column<int> Revision => new(_parent, static m => m.Revision);
 
             /// <summary>
             ///     Timestamp of the last time this document was modified
             /// </summary>
             public Column<DateTimeOffset> LastModified =>
-                new(_parent, m => m.LastModified);
+                new(_parent, static m => m.LastModified);
 
             /// <summary>
             ///     Optional metadata for the timestamp of when this document was created
             /// </summary>
-            public Column<DateTimeOffset> CreatedAt => new(_parent, m => m.CreatedAt);
+            public Column<DateTimeOffset> CreatedAt => new(_parent, static m => m.CreatedAt);
 
             /// <summary>
             ///     The stored tenant id of this document
             /// </summary>
-            public Column<string> TenantId => new(_parent, m => m.TenantId);
+            public Column<string> TenantId => new(_parent, static m => m.TenantId);
 
             /// <summary>
             ///     If soft-deleted, whether or not the document is marked as deleted
             /// </summary>
-            public Column<bool> IsSoftDeleted => new(_parent, m => m.IsSoftDeleted);
+            public Column<bool> IsSoftDeleted => new(_parent, static m => m.IsSoftDeleted);
 
             /// <summary>
             ///     If soft-deleted, the time at which the document was marked as deleted
             /// </summary>
             public Column<DateTimeOffset?> SoftDeletedAt =>
-                new(_parent, m => m.SoftDeletedAt);
+                new(_parent, static m => m.SoftDeletedAt);
 
             /// <summary>
             ///     If the document is part of a type hierarchy, this designates
             ///     Marten's internal name for the sub type
             /// </summary>
-            public Column<string> DocumentType => new(_parent, m => m.DocumentType);
+            public Column<string> DocumentType => new(_parent, static m => m.DocumentType);
 
             /// <summary>
             ///     The full name of the .Net type that was persisted
             /// </summary>
-            public Column<string> DotNetType => new(_parent, m => m.DotNetType);
+            public Column<string> DotNetType => new(_parent, static m => m.DotNetType);
 
             /// <summary>
             ///     Optional metadata describing the correlation id for a
             ///     unit of work
             /// </summary>
-            public Column<string> CorrelationId => new(_parent, m => m.CorrelationId);
+            public Column<string> CorrelationId => new(_parent, static m => m.CorrelationId);
 
             /// <summary>
             ///     Optional metadata describing the correlation id for a
             ///     unit of work
             /// </summary>
-            public Column<string> CausationId => new(_parent, m => m.CausationId);
+            public Column<string> CausationId => new(_parent, static m => m.CausationId);
 
             /// <summary>
             ///     Optional metadata describing the user name or
             ///     process name for this unit of work
             /// </summary>
-            public Column<string> LastModifiedBy => new(_parent, m => m.LastModifiedBy);
+            public Column<string> LastModifiedBy => new(_parent, static m => m.LastModifiedBy);
 
             /// <summary>
             ///     Optional, user defined headers
             /// </summary>
-            public Column<Dictionary<string, object>> Headers => new(_parent, m => m.Headers);
+            public Column<Dictionary<string, object>> Headers => new(_parent, static m => m.Headers);
 
             /// <summary>
             ///     Turn off the informational metadata columns

@@ -31,7 +31,7 @@ public class BulkLoaderBuilder
 
         var arguments = orderArgumentsForBulkWriting(upsertFunction);
 
-        var columns = arguments.Select(x => $"\\\"{x.Column}\\\"").Join(", ");
+        var columns = arguments.Select(static x => $"\\\"{x.Column}\\\"").Join(", ");
 
         var type = assembly.AddType(TypeName,
             typeof(BulkLoader<,>).MakeGenericType(_mapping.DocumentType, _mapping.IdType));
@@ -71,7 +71,7 @@ public class BulkLoaderBuilder
 
     private static List<UpsertArgument> orderArgumentsForBulkWriting(UpsertFunction upsertFunction)
     {
-        var arguments = upsertFunction.OrderedArguments().Where(x => !(x is CurrentVersionArgument)).ToList();
+        var arguments = upsertFunction.OrderedArguments().Where(static x => !(x is CurrentVersionArgument)).ToList();
         // You need the document body to go last so that any metadata pushed into the document
         // is serialized into the JSON data
         var body = arguments.OfType<DocJsonBodyArgument>().Single();
@@ -108,8 +108,8 @@ public class BulkLoaderBuilder
         var isMultiTenanted = _mapping.TenancyStyle == TenancyStyle.Conjoined;
         var storageTable = table.Identifier.QualifiedName;
 
-        var updates = table.Columns.Where(x => x.Name != "id" && x.Name != SchemaConstants.LastModifiedColumn)
-            .Select(x => $"{x.Name} = source.{x.Name}").Join(", ");
+        var updates = table.Columns.Where(static x => x.Name != "id" && x.Name != SchemaConstants.LastModifiedColumn)
+            .Select(static x => $"{x.Name} = source.{x.Name}").Join(", ");
 
         var joinExpression = isMultiTenanted
             ? "source.id = target.id and source.tenant_id = target.tenant_id"

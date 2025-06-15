@@ -148,8 +148,8 @@ public abstract partial class DocumentSessionBase
         assertNotDisposed();
 
         var documentsGroupedByType = documents
-            .Where(x => x != null)
-            .GroupBy(x => x.GetType());
+            .Where(static x => x != null)
+            .GroupBy(static x => x.GetType());
 
         foreach (var group in documentsGroupedByType)
         {

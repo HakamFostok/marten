@@ -8,7 +8,7 @@ namespace Marten.Storage.Metadata;
 
 internal class SoftDeletedColumn: MetadataColumn<bool>, ISelectableColumn
 {
-    public SoftDeletedColumn(): base(SchemaConstants.DeletedColumn, x => x.Deleted)
+    public SoftDeletedColumn(): base(SchemaConstants.DeletedColumn, static x => x.Deleted)
     {
         DefaultExpression = "FALSE";
     }

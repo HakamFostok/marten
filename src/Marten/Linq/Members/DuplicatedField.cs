@@ -23,7 +23,7 @@ namespace Marten.Linq.Members;
 
 public class DuplicatedField: IQueryableMember, IComparableMember, IHasChildrenMembers
 {
-    private readonly Func<object, object> _parseObject = o => o;
+    private readonly Func<object, object> _parseObject = static o => o;
     private readonly bool useTimestampWithoutTimeZoneForDateTime;
     private string _columnName;
 

@@ -23,10 +23,10 @@ internal class StringContains: StringComparisonParser
         return new[]
             {
                 typeof(string).GetMethod("Contains", new[] { typeof(string), typeof(StringComparison) }),
-                ReflectionHelper.GetMethod<string>(s => s.Contains(null)),
-                ReflectionHelper.GetMethod<string>(s => s.Contains(null, StringComparison.CurrentCulture))
+                ReflectionHelper.GetMethod<string>(static s => s.Contains(null)),
+                ReflectionHelper.GetMethod<string>(static s => s.Contains(null, StringComparison.CurrentCulture))
             }
-            .Where(m => m != null)
+            .Where(static m => m != null)
             .Distinct()
             .ToArray();
     }

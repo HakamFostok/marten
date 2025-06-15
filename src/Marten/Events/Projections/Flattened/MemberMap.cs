@@ -23,7 +23,7 @@ internal class MemberMap<TEvent, TMember>: IColumnMap
         _members = MemberFinder.Determine(members);
         _mapType = columnMapType;
 
-        ColumnName = tableColumn ?? _members.Select(x => x.Name.ToSnakeCase()).Join("_");
+        ColumnName = tableColumn ?? _members.Select(static x => x.Name.ToSnakeCase()).Join("_");
     }
 
     public MemberInfo[] Members => _members;

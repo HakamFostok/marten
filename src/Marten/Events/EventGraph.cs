@@ -34,7 +34,7 @@ public partial class EventGraph: IEventStoreOptions, IReadOnlyEventStoreOptions,
     IEventRegistry, IAggregationSourceFactory<IQuerySession>, IDescribeMyself, ICodeFileCollection
 {
     private readonly Cache<Type, string> _aggregateNameByType =
-        new(type => type.IsGenericType ? type.ShortNameInCode() : type.Name.ToTableAlias());
+        new(static type => type.IsGenericType ? type.ShortNameInCode() : type.Name.ToTableAlias());
 
     private readonly Cache<string, Type> _aggregateTypeByName;
 
@@ -459,7 +459,7 @@ public partial class EventGraph: IEventStoreOptions, IReadOnlyEventStoreOptions,
 
     internal bool IsActive(StoreOptions options)
     {
-        return _events.Any(x => x.DocumentType != typeof(Archived)) || Options.Projections.IsActive();
+        return _events.Any(static x => x.DocumentType != typeof(Archived)) || Options.Projections.IsActive();
     }
 
     internal string GetStreamIdDBType()

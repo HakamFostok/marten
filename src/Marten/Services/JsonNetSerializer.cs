@@ -205,8 +205,8 @@ public class JsonNetSerializer: ISerializer
             }
             else
             {
-                _serializerSettings.Converters.RemoveAll(x => x is StringEnumConverter);
-                _cleanSettings.Converters.RemoveAll(x => x is StringEnumConverter);
+                _serializerSettings.Converters.RemoveAll(static x => x is StringEnumConverter);
+                _cleanSettings.Converters.RemoveAll(static x => x is StringEnumConverter);
             }
         }
     }

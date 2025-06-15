@@ -19,7 +19,7 @@ internal class CorrelationIdColumn: MetadataColumn<string>, ISelectableColumn, I
 {
     public static readonly string ColumnName = "correlation_id";
 
-    public CorrelationIdColumn(): base(ColumnName, x => x.CorrelationId)
+    public CorrelationIdColumn(): base(ColumnName, static x => x.CorrelationId)
     {
         Enabled = false;
         ShouldUpdatePartials = true;
@@ -43,7 +43,7 @@ internal class CorrelationIdColumn: MetadataColumn<string>, ISelectableColumn, I
 
     public void GenerateAppendCode(GeneratedMethod method, EventGraph graph, int index, AppendMode full)
     {
-        method.SetParameterFromMember<IEvent>(index, x => x.CorrelationId);
+        method.SetParameterFromMember<IEvent>(index, static x => x.CorrelationId);
     }
 
     public void GenerateCode(StorageStyle storageStyle, GeneratedType generatedType, GeneratedMethod async,

@@ -7,7 +7,7 @@ namespace Marten.Storage.Metadata;
 
 internal class DeletedAtColumn: MetadataColumn<DateTimeOffset?>, ISelectableColumn
 {
-    public DeletedAtColumn(): base(SchemaConstants.DeletedAtColumn, x => x.DeletedAt)
+    public DeletedAtColumn(): base(SchemaConstants.DeletedAtColumn, static x => x.DeletedAt)
     {
         AllowNulls = true;
     }

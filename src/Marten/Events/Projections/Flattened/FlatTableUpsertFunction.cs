@@ -61,7 +61,7 @@ $function$;
     {
         foreach (var column in pkColumns) yield return column.ToFunctionArgumentDeclaration();
 
-        var inputColumns = _columns.Where(x => x.RequiresInput);
+        var inputColumns = _columns.Where(static x => x.RequiresInput);
         foreach (var inputColumn in inputColumns)
         {
             var tableColumn = _table.ColumnFor(inputColumn.ColumnName);

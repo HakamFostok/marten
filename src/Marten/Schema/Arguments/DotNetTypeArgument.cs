@@ -15,7 +15,7 @@ internal class DotNetTypeArgument: UpsertArgument
     private static readonly MethodInfo _getType = typeof(object).GetMethod("GetType");
 
     private static readonly MethodInfo _fullName =
-        ReflectionHelper.GetProperty<Type>(x => x.FullName).GetMethod;
+        ReflectionHelper.GetProperty<Type>(static x => x.FullName).GetMethod;
 
     public DotNetTypeArgument()
     {

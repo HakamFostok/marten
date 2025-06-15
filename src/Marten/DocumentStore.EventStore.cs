@@ -52,7 +52,7 @@ public partial class DocumentStore: IEventStore<IDocumentOperations, IQuerySessi
 
             if (Options.Events.TenancyStyle == TenancyStyle.Conjoined) return true;
 
-            if (Options.Storage.AllDocumentMappings.Any(x => x.TenancyStyle == TenancyStyle.Conjoined)) return true;
+            if (Options.Storage.AllDocumentMappings.Any(static x => x.TenancyStyle == TenancyStyle.Conjoined)) return true;
 
             return false;
         }
@@ -226,7 +226,7 @@ public partial class DocumentStore: IEventStore<IDocumentOperations, IQuerySessi
 
     private IEnumerable<ISqlFragment> buildEventLoaderFilters(EventFilterable filterable)
     {
-        if (filterable.IncludedEventTypes.Any() && !filterable.IncludedEventTypes.Any(x => x.IsAbstract || x.IsInterface))
+        if (filterable.IncludedEventTypes.Any() && !filterable.IncludedEventTypes.Any(static x => x.IsAbstract || x.IsInterface))
         {
             // We want to explicitly add in the archived event
             var allTypes = filterable.IncludedEventTypes.Concat([typeof(Archived)]).ToArray();

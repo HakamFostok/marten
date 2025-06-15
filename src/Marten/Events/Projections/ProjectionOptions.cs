@@ -69,8 +69,8 @@ public class ProjectionOptions: ProjectionGraph<IProjection, IDocumentOperations
     internal IInlineProjection<IDocumentOperations>[] BuildInlineProjections(DocumentStore store)
     {
         return All
-            .Where(x => x.Lifecycle == ProjectionLifecycle.Inline)
-            .Select(x => x.BuildForInline())
+            .Where(static x => x.Lifecycle == ProjectionLifecycle.Inline)
+            .Select(static x => x.BuildForInline())
             .ToArray();
     }
 

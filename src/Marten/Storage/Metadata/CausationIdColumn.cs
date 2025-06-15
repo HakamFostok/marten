@@ -19,7 +19,7 @@ internal class CausationIdColumn: MetadataColumn<string>, ISelectableColumn, IEv
 {
     public static readonly string ColumnName = "causation_id";
 
-    public CausationIdColumn(): base(ColumnName, x => x.CausationId)
+    public CausationIdColumn(): base(ColumnName, static x => x.CausationId)
     {
         Enabled = false;
         ShouldUpdatePartials = true;
@@ -43,7 +43,7 @@ internal class CausationIdColumn: MetadataColumn<string>, ISelectableColumn, IEv
 
     public void GenerateAppendCode(GeneratedMethod method, EventGraph graph, int index, AppendMode full)
     {
-        method.SetParameterFromMember<IEvent>(index, x => x.CausationId);
+        method.SetParameterFromMember<IEvent>(index, static x => x.CausationId);
     }
 
     public void GenerateCode(StorageStyle storageStyle, GeneratedType generatedType, GeneratedMethod async,

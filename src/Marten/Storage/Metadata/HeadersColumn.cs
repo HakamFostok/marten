@@ -23,7 +23,7 @@ internal class HeadersColumn: MetadataColumn<Dictionary<string, object>>, IEvent
 {
     public static readonly string ColumnName = "headers";
 
-    public HeadersColumn(): base(ColumnName, x => x.Headers)
+    public HeadersColumn(): base(ColumnName, static x => x.Headers)
     {
         Type = "jsonb";
         Enabled = false;

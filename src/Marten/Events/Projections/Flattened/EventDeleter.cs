@@ -28,8 +28,8 @@ internal class EventDeleter<T> : IEventHandler
         if (_parameter == null)
         {
             _parameter = events.StreamIdentity == StreamIdentity.AsGuid
-                ? (IParameterSetter<IEvent>)new ParameterSetter<IEvent, Guid>(e => e.StreamId)
-                : new ParameterSetter<IEvent, string>(e => e.StreamKey);
+                ? (IParameterSetter<IEvent>)new ParameterSetter<IEvent, Guid>(static e => e.StreamId)
+                : new ParameterSetter<IEvent, string>(static e => e.StreamKey);
 
         }
         _sql = $"delete from {table.Identifier} where {table.PrimaryKeyColumns[0]} = ?";

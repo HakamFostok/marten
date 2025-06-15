@@ -170,7 +170,7 @@ public static class LinqInternalExtensions
             else
             {
                 throw new BadLinqExpressionException("Marten does not (yet) support using member chain: " +
-                                                     members.Select(x => x.Name).Join("."));
+                                                     members.Select(static x => x.Name).Join("."));
             }
         }
 

@@ -30,12 +30,12 @@ internal class ChildCollectionWhereClause: IWhereFragmentHolder
 
         if (fragment is CompoundWhereFragment compound)
         {
-            if (compound.Children.All(x => x is ICollectionAware aware && aware.CanReduceInChildCollection()))
+            if (compound.Children.All(static x => x is ICollectionAware aware && aware.CanReduceInChildCollection()))
             {
                 var children = compound.Children.OfType<ICollectionAware>().ToArray();
                 if (compound.Separator.ContainsIgnoreCase("and"))
                 {
-                    if (children.All(x => x.SupportsContainment()))
+                    if (children.All(static x => x.SupportsContainment()))
                     {
                         var containment = new ContainmentWhereFilter(collectionMember, serializer)
                         {

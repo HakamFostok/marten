@@ -6,10 +6,7 @@ using Weasel.Postgresql.SqlGeneration;
 namespace Marten.Linq.SqlGeneration.Filters;
 
 
-internal interface ISoftDeletedFilter: ISqlFragment
-{
-
-}
+internal interface ISoftDeletedFilter: ISqlFragment;
 
 internal class ExcludeSoftDeletedFilter: ISoftDeletedFilter
 {

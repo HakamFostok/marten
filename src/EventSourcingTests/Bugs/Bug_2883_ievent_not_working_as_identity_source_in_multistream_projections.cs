@@ -99,11 +99,9 @@ public class CustomerInsightsProjection : MultiStreamProjection<CustomerInsights
 }
     #endregion
 
-public class CustomerDeleted
-{
-}
+public class CustomerDeleted;
 
-public record CustomerCreated();
+    public record CustomerCreated();
 
 public record CustomerInsightsResponse(string Id, DateOnly Date, int NewCustomers);
 }

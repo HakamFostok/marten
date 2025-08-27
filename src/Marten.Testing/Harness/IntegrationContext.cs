@@ -41,9 +41,7 @@ namespace Marten.Testing.Harness
     }
 
     [CollectionDefinition("integration")]
-    public class IntegrationCollection: ICollectionFixture<DefaultStoreFixture>
-    {
-    }
+    public class IntegrationCollection: ICollectionFixture<DefaultStoreFixture>;
 
     [Collection("integration")]
     public class IntegrationContext: IDisposable, IAsyncLifetime

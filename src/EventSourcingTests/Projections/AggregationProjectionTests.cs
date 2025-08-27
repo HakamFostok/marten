@@ -40,8 +40,8 @@ public class AggregationProjectionTests
 
 }
 
-public interface IThing{}
-public class Thing : IThing{}
+public interface IThing;
+public class Thing : IThing;
 
 public class SampleAggregate: SingleStreamProjection<MyAggregate, Guid>
 {

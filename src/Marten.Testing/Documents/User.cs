@@ -94,9 +94,7 @@ public class UserWithoutIdSetter
     public string UserName { get; set; }
 }
 
-public class UserWithInterface: User, IUserWithInterface
-{
-}
+public class UserWithInterface: User, IUserWithInterface;
 
 public interface IUserWithInterface
 {

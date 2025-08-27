@@ -101,15 +101,9 @@ public abstract class LapEvent
     public Guid LapId { get; set; }
 }
 
-public class LapStarted : LapEvent
-{
+public class LapStarted : LapEvent;
 
-}
-
-public class LapFinished : LapEvent
-{
-
-}
+public class LapFinished : LapEvent;
 
 public class LapMultiStreamProjection: MultiStreamProjection<Lap, Guid>
 {

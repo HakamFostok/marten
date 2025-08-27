@@ -29,9 +29,9 @@ public class ejecting_all_pending_changes : IntegrationContext
         #endregion
     }
 
-    public class AEvent{}
-    public class BEvent{}
-    public class CEvent{}
+    public class AEvent;
+    public class BEvent;
+    public class CEvent;
 
     [Fact]
     public void  will_clear_all_event_operations()

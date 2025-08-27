@@ -4,9 +4,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace Marten.Testing.Examples;
 
-public interface IInvoicingStore : IDocumentStore
-{
-}
+public interface IInvoicingStore : IDocumentStore;
 
 public class DocumentCleanerExamples
 {

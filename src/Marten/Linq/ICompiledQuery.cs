@@ -18,7 +18,7 @@ public interface IQueryPlanning
 /// Strictly a marker class to help Marten discover compiled query types
 /// in assemblies
 /// </summary>
-public interface ICompiledQueryMarker{}
+public interface ICompiledQueryMarker;
 
 /// <summary>
 ///     Used to express a query expression that when used will be cached by class type implementing this interface
@@ -43,9 +43,7 @@ public interface ICompiledQuery<TDoc, TOut> : ICompiledQueryMarker where TDoc: n
 
 #region sample_ICompiledListQuery-with-no-select
 
-public interface ICompiledListQuery<TDoc>: ICompiledListQuery<TDoc, TDoc> where TDoc : notnull
-{
-}
+public interface ICompiledListQuery<TDoc>: ICompiledListQuery<TDoc, TDoc> where TDoc : notnull;
 
 #endregion
 
@@ -57,9 +55,7 @@ public interface ICompiledListQuery<TDoc>: ICompiledListQuery<TDoc, TDoc> where 
 
 #region sample_ICompiledListQuery-with-select
 
-public interface ICompiledListQuery<TDoc, TOut>: ICompiledQuery<TDoc, IEnumerable<TOut>> where TDoc : notnull
-{
-}
+public interface ICompiledListQuery<TDoc, TOut>: ICompiledQuery<TDoc, IEnumerable<TOut>> where TDoc : notnull;
 
 #endregion
 
@@ -70,8 +66,6 @@ public interface ICompiledListQuery<TDoc, TOut>: ICompiledQuery<TDoc, IEnumerabl
 
 #region sample_ICompiledQuery-for-single-doc
 
-public interface ICompiledQuery<TDoc>: ICompiledQuery<TDoc, TDoc> where TDoc : notnull
-{
-}
+public interface ICompiledQuery<TDoc>: ICompiledQuery<TDoc, TDoc> where TDoc : notnull;
 
 #endregion

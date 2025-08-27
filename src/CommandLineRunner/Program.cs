@@ -22,9 +22,7 @@ using MyAggregate = EventSourcingTests.Aggregation.MyAggregate;
 
 namespace CommandLineRunner;
 
-public interface IOtherStore: IDocumentStore
-{
-}
+public interface IOtherStore: IDocumentStore;
 
 #region sample_configuring_pre_build_types
 

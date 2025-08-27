@@ -42,7 +42,7 @@ public class Board
     public string CloseReason { get; private set; }
 }
 
-internal interface BoardStateEvent{}
+internal interface BoardStateEvent;
 
 public record BoardOpened(string Name, DateOnly Date, DateTimeOffset Opened) : BoardStateEvent;
 

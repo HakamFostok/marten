@@ -3,7 +3,4 @@ using JasperFx.Events.Projections;
 
 namespace Marten.Events.Aggregation;
 
-public interface IMessageBatch: IMessageSink, IChangeListener
-{
-
-}
+public interface IMessageBatch: IMessageSink, IChangeListener;

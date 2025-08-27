@@ -12,9 +12,7 @@ public class SubClassForeignKeyBugs: BugIntegrationContext
         public int DepartmentId { get; set; }
     }
 
-    public class Employee: Person
-    {
-    }
+    public class Employee: Person;
 
     public class Address
     {

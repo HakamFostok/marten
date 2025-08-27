@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using Marten.Testing.Harness;
 using Marten.Testing.OtherAssembly.Bug1851;
 
@@ -16,7 +16,4 @@ public class Bug_1851_need_to_recursively_reference_assemblies_in_generic_type_p
     }
 }
 
-public class StoredObjectInThisAssembly: StoredObjectInOtherAssembly
-{
-
-}
+public class StoredObjectInThisAssembly: StoredObjectInOtherAssembly;

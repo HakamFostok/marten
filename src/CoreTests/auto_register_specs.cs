@@ -76,8 +76,8 @@ public class DiscoveredDocument2
     public Guid Id { get; set; }
 }
 
-public interface IDomainEvent{}
-public interface IIntegrationEvent{}
+public interface IDomainEvent;
+public interface IIntegrationEvent;
 
 public class DomainEvent1: IDomainEvent;
 public class DomainEvent2: IDomainEvent;
@@ -87,10 +87,10 @@ public class IntegrationEvent1: IIntegrationEvent;
 public class IntegrationEvent2: IIntegrationEvent;
 
 [MartenEvent]
-public class IntegrationEvent3{}
+public class IntegrationEvent3;
 
 [MartenEvent(Alias = "four")]
-public class IntegrationEvent4{}
+public class IntegrationEvent4;
 
 public class UsersByFirstName: ICompiledListQuery<User>
 {

@@ -536,6 +536,4 @@ public class ProductMultiStreamProjection: SingleStreamProjection<Product, Guid>
 
 #endregion
 
-public interface ICustomStore: IDocumentStore
-{
-}
+public interface ICustomStore: IDocumentStore;

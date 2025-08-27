@@ -2,10 +2,7 @@ using Marten.Testing.Harness;
 
 namespace CoreTests.Bugs;
 
-public class Bug_2564_database_creation : BugIntegrationContext
-{
-
-}
+public class Bug_2564_database_creation : BugIntegrationContext;
 
 public sealed class Dbo
 {

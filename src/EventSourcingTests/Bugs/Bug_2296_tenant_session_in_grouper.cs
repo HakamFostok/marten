@@ -71,9 +71,7 @@ public class Bug_2296_tenant_session_in_grouper: OneOffConfigurationsContext
         public string Tag { get; set; }
     }
 
-    public class ResetEvent
-    {
-    }
+    public class ResetEvent;
 
     public class CountsByTag
     {

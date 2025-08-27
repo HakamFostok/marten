@@ -1,4 +1,4 @@
-﻿using JasperFx;
+using JasperFx;
 using JasperFx.CodeGeneration;
 using JasperFx.Events;
 using Marten;
@@ -36,6 +36,4 @@ public class Program
     }
 }
 
-public class Started
-{
-}
+public class Started;

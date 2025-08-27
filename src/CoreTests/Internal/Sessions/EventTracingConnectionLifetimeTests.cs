@@ -23,9 +23,7 @@ namespace CoreTests.Internal.Sessions
 {
     // EventTracingConnectionLifetime cannot be tested in parallel with other tests
     [CollectionDefinition(nameof(EventTracingConnectionLifetimeCollection), DisableParallelization = true)]
-    public class EventTracingConnectionLifetimeCollection
-    {
-    }
+    public class EventTracingConnectionLifetimeCollection;
 
     [Collection(nameof(EventTracingConnectionLifetimeCollection))]
     public class EventTracingConnectionLifetimeTests : IAsyncLifetime

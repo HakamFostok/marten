@@ -55,9 +55,7 @@ internal interface IStoreConfig: ICodeFile
     StoreOptions BuildStoreOptions(IServiceProvider provider);
 }
 
-public interface IConfigureMarten<T>: IConfigureMarten where T : IDocumentStore
-{
-}
+public interface IConfigureMarten<T>: IConfigureMarten where T : IDocumentStore;
 
 
 internal class SecondaryStoreConfig<T>: IStoreConfig where T : IDocumentStore

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -46,13 +46,9 @@ public class Bug_projection_base_settings_must_be_used_by_deamon : BugIntegratio
         eventsCount.ShouldBe(expectedEventsCount);
     }
 
-    private class EventA
-    {
-    }
+    private class EventA;
 
-    private class EventB
-    {
-    }
+    private class EventB;
 
     internal class FilterableProjection: ProjectionBase, IProjection
     {

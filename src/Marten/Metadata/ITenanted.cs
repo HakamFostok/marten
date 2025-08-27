@@ -9,7 +9,4 @@ namespace Marten.Metadata;
 ///     types to opt into conjoined tenancy and track the tenant id
 ///     on the document itself
 /// </summary>
-public interface ITenanted : IHasTenantId
-{
-
-}
+public interface ITenanted : IHasTenantId;

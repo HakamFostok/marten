@@ -14,26 +14,18 @@ public class Base
     public string Id { get; set; }
 }
 
-public class ImplementationA: Base
-{
-}
+public class ImplementationA: Base;
 
-public class ImplementationB: Base
-{
-}
+public class ImplementationB: Base;
 
 public class Base2
 {
     public string Id { get; set; }
 }
 
-public class ImplementationA2: Base2
-{
-}
+public class ImplementationA2: Base2;
 
-public class ImplementationB2: Base2
-{
-}
+public class ImplementationB2: Base2;
 
 public class SomethingHappened
 {

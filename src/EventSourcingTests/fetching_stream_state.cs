@@ -76,7 +76,7 @@ public class fetching_stream_state_before_aggregator_is_registered: IntegrationC
     }
 }
 
-public class FooEvent { }
+public class FooEvent;
 
 public class FooAggregate
 {

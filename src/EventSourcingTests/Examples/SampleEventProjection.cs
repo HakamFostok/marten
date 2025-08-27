@@ -29,7 +29,7 @@ public static class EventProjectionRegistration
     }
 }
 
-public interface ISpecialEvent{}
+public interface ISpecialEvent;
 
 public class Event1: ISpecialEvent
 {
@@ -50,8 +50,8 @@ public class Event3
 {
     public Guid LookupId { get; set; }
 }
-public class Event4{}
-public class Event5{}
+public class Event4;
+public class Event5;
 
 public class Document1
 {

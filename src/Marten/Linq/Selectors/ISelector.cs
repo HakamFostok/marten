@@ -5,9 +5,7 @@ using System.Threading.Tasks;
 
 namespace Marten.Linq.Selectors;
 
-public interface ISelector
-{
-}
+public interface ISelector;
 
 public interface ISelector<T>: ISelector
 {

@@ -1,5 +1,3 @@
 namespace DocumentDbTests.HierarchicalStorage;
 
-public abstract class OsPolicy: BasePolicy
-{
-}
+public abstract class OsPolicy: BasePolicy;

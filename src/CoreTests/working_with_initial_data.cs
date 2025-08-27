@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -138,7 +138,7 @@ public class working_with_initial_data : OneOffConfigurationsContext
         stub.ReceivedStore.ShouldBe(store);
     }
 
-    public interface IOtherStore : IDocumentStore{}
+    public interface IOtherStore : IDocumentStore;
 
     [Fact]
     public async Task runs_all_the_initial_data_sets_on_startup_on_other_store()

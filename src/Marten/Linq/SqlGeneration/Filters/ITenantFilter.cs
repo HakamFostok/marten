@@ -7,6 +7,4 @@ namespace Marten.Linq.SqlGeneration.Filters;
 ///     Marker interface to help Marten track whether or not a Linq
 ///     query has some kind of tenant-aware filtering
 /// </summary>
-public interface ITenantFilter : ISqlFragment
-{
-}
+public interface ITenantFilter : ISqlFragment;

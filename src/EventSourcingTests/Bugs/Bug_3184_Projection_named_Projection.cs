@@ -23,10 +23,7 @@ public class Bug_3184_Projection_named_Projection : BugIntegrationContext
     }
 }
 
-public class AccountCreated
-{
-
-}
+public class AccountCreated;
 
 public record AccountId(Guid Id);
 

@@ -859,9 +859,7 @@ public class DocumentMappingTests
         public int Id;
     }
 
-    public class BaseDocumentSubClass: BaseDocumentWithAttribute
-    {
-    }
+    public class BaseDocumentSubClass: BaseDocumentWithAttribute;
 
     [PropertySearching(PropertySearching.JSON_Locator_Only)]
     public class Organization

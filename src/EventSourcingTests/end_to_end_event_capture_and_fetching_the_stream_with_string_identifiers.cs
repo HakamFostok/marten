@@ -380,9 +380,7 @@ public class
 }
 
 [CollectionDefinition("string_identified_streams")]
-public class StringIdentifiedStreamsCollection: ICollectionFixture<StringIdentifiedStreamsFixture>
-{
-}
+public class StringIdentifiedStreamsCollection: ICollectionFixture<StringIdentifiedStreamsFixture>;
 
 public class StringIdentifiedStreamsFixture: StoreFixture
 {

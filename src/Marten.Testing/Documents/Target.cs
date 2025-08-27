@@ -217,10 +217,7 @@ public class Target
     public TimeSpan HowLong { get; set; }
 }
 
-public class FSharpTarget: Target
-{
-
-}
+public class FSharpTarget: Target;
 
 public class Address
 {
@@ -253,14 +250,8 @@ public class Squad
     public string Id { get; set; }
 }
 
-public class BasketballTeam: Squad
-{
-}
+public class BasketballTeam: Squad;
 
-public class FootballTeam: Squad
-{
-}
+public class FootballTeam: Squad;
 
-public class BaseballTeam: Squad
-{
-}
+public class BaseballTeam: Squad;

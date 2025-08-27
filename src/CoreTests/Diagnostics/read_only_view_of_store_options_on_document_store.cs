@@ -96,17 +96,11 @@ public class read_only_view_of_store_options_on_document_store: OneOffConfigurat
         public string Id { get; set; }
     }
 
-    public class BasketballTeam: Squad
-    {
-    }
+    public class BasketballTeam: Squad;
 
-    public class FootballTeam: Squad
-    {
-    }
+    public class FootballTeam: Squad;
 
-    public class BaseballTeam: Squad
-    {
-    }
+    public class BaseballTeam: Squad;
 }
 
 public class QuestStarted
@@ -310,9 +304,7 @@ public class DEvent: ITabulator
     }
 }
 
-public class EEvent
-{
-}
+public class EEvent;
 
 public class CreateEvent
 {

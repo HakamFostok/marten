@@ -6,9 +6,7 @@ namespace Marten.AspNetCore.Testing.Examples;
 
 #region sample_multiple_databases_integration_context
 
-public interface IInvoicingStore: IDocumentStore
-{
-}
+public interface IInvoicingStore: IDocumentStore;
 
 public abstract class MultipleMartenDatabasesIntegrationContext: IAsyncLifetime
 {

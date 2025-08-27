@@ -768,6 +768,4 @@ public class SimpleSubscription: ISubscription
     }
 }
 
-public interface ICustomStore: IDocumentStore
-{
-}
+public interface ICustomStore: IDocumentStore;

@@ -1,4 +1,4 @@
-﻿using DaemonTests.Aggregations;
+using DaemonTests.Aggregations;
 using DaemonTests.EventProjections;
 using DaemonTests.TestingSupport;
 using JasperFx;
@@ -10,9 +10,7 @@ using Marten.Testing.Documents;
 using Marten.Testing.Harness;
 using Microsoft.Extensions.Hosting;
 
-public interface IOtherStore: IDocumentStore
-{
-}
+public interface IOtherStore: IDocumentStore;
 
 public class Program
 {

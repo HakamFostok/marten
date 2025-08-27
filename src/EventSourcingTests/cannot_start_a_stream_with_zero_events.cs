@@ -24,7 +24,7 @@ public class cannot_start_a_stream_with_zero_events : OneOffConfigurationsContex
         public string Description { get; set; }
     }
 
-    public class IssuesList { }
+    public class IssuesList;
 
 
     [Fact]

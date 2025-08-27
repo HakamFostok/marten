@@ -96,8 +96,5 @@ public class FeatureManagementUsingExtension: IAsyncConfigureMarten
 
 #endregion
 
-public class Module1Event
-{
-
-}
+public class Module1Event;
 

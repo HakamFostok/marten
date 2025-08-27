@@ -83,12 +83,6 @@ public abstract class OrderItem
 
 }
 
-public class Product: OrderItem
-{
+public class Product: OrderItem;
 
-}
-
-public class Subscription: OrderItem
-{
-
-}
+public class Subscription: OrderItem;

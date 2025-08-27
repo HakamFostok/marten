@@ -8,6 +8,4 @@ namespace Marten.Schema;
 ///     id/Id naming convention
 /// </summary>
 [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
-public class IdentityAttribute: MartenAttribute
-{
-}
+public class IdentityAttribute: MartenAttribute;

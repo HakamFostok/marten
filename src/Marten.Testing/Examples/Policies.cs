@@ -30,9 +30,7 @@ public sealed class Policies
     }
 
     #region sample_sample-policy-implementation
-    public interface IRequireMultiTenancy
-    {
-    }
+    public interface IRequireMultiTenancy;
 
     public class TenancyPolicy: IDocumentPolicy
     {

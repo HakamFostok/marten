@@ -25,7 +25,4 @@ public interface IProjectionCoordinator : IHostedService
     Task ResumeAsync();
 }
 
-public interface IProjectionCoordinator<T> : IProjectionCoordinator where T : IDocumentStore
-{
-
-}
+public interface IProjectionCoordinator<T> : IProjectionCoordinator where T : IDocumentStore;

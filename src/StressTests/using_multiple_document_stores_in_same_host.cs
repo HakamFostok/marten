@@ -478,5 +478,5 @@ public class additional_document_store_registration_and_optimized_artifact_workf
     }
 }
 
-public interface IFirstStore : IDocumentStore{}
-public interface ISecondStore : IDocumentStore{}
+public interface IFirstStore : IDocumentStore;
+public interface ISecondStore : IDocumentStore;

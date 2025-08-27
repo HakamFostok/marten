@@ -16,9 +16,7 @@ public class Bug_997_or_queries_with_hierarchical_docs: BugIntegrationContext
         public string DisplayName { get; set; }
     }
 
-    public class MegaUser: Bug997User
-    {
-    }
+    public class MegaUser: Bug997User;
 
     [Fact]
     public async Task query_with_or_on_child_document()

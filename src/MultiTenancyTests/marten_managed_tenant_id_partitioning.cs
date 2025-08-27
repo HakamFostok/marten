@@ -399,9 +399,9 @@ public class SimpleAggregate : IRevisioned
     }
 }
 
-public class BEvent{}
-public class CEvent{}
-public class DEvent{}
-public class EEvent{}
+public class BEvent;
+public class CEvent;
+public class DEvent;
+public class EEvent;
 
 

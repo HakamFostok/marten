@@ -63,10 +63,7 @@ public class DefaultDataSet: IInitialData
 #region sample_IInvoicingStore
 
 // These marker interfaces *must* be public
-public interface IInvoicingStore : IDocumentStore
-{
-
-}
+public interface IInvoicingStore : IDocumentStore;
 
 #endregion
 

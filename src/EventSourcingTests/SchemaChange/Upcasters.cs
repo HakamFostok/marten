@@ -774,10 +774,7 @@ namespace EventSourcingTests.SchemaChange
             }
         }
 
-        public class ShoppingCartProjection: SingleStreamProjection<ShoppingCartDetails, Guid>
-        {
-
-        }
+        public class ShoppingCartProjection: SingleStreamProjection<ShoppingCartDetails, Guid>;
     }
 
     public class UpcastersTests: OneOffConfigurationsContext

@@ -96,9 +96,7 @@ namespace Bug1781
         public Guid ByUser { get; set; }
     }
 
-    public class DeleteImportEvent
-    {
-    }
+    public class DeleteImportEvent;
 
     public class CreateDataItemEvent
     {
@@ -106,9 +104,7 @@ namespace Bug1781
         public string Name { get; set; }
     }
 
-    public class DeleteDataItemEvent
-    {
-    }
+    public class DeleteDataItemEvent;
 
     public class DataImportAggregate
     {

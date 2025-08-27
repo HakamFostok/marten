@@ -347,5 +347,5 @@ public class jasper_fx_mechanics
 
 }
 
-public interface IFirstStore : IDocumentStore{}
-public interface ISecondStore : IDocumentStore{}
+public interface IFirstStore : IDocumentStore;
+public interface ISecondStore : IDocumentStore;

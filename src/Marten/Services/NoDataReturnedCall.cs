@@ -4,8 +4,6 @@ namespace Marten.Services;
 ///     Marker interface telling Marten not
 ///     to advance the results for callbacks
 /// </summary>
-public interface NoDataReturnedCall
-{
-}
+public interface NoDataReturnedCall;
 
-public interface AssertsOnCallback{}
+public interface AssertsOnCallback;

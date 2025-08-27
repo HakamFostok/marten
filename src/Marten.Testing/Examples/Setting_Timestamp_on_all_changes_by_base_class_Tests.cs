@@ -54,17 +54,11 @@ public class TimestampListener: DocumentSessionListenerBase
     }
 }
 
-public class Doc1: BaseEntity
-{
-}
+public class Doc1: BaseEntity;
 
-public class Doc2: BaseEntity
-{
-}
+public class Doc2: BaseEntity;
 
-public class Doc3: BaseEntity
-{
-}
+public class Doc3: BaseEntity;
 
 public class BaseEntity
 {

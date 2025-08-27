@@ -26,7 +26,7 @@ public class TripStarted
 {
     public string Description { get; set; }
 }
-public class TripEnded{}
+public class TripEnded;
 
 #region sample_aggregation_using_event_metadata
 

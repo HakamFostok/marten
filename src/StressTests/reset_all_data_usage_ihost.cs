@@ -10,9 +10,7 @@ using Xunit.Abstractions;
 
 namespace DocumentDbTests.SessionMechanics;
 
-public interface IInvoicingStore: IDocumentStore
-{
-}
+public interface IInvoicingStore: IDocumentStore;
 
 public class reset_all_data_usage_ihost
 {

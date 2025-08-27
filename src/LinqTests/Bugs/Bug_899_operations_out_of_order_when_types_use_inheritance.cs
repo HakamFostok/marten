@@ -57,9 +57,9 @@ public interface IAccountingDocument
     Guid DocumentId { get; set; }
 }
 
-public class Invoice: BaseAccountingDocument { }
+public class Invoice: BaseAccountingDocument;
 
-public class PurchaseOrder: BaseAccountingDocument { }
+public class PurchaseOrder: BaseAccountingDocument;
 
 public abstract class BaseAccountingDocument: IAccountingDocument
 {
@@ -72,6 +72,6 @@ public abstract class BaseAccountingDocument: IAccountingDocument
     public YetAnotherClass YetAnother { get; set; }
 }
 
-public class AnotherClass { }
+public class AnotherClass;
 
-public class YetAnotherClass { }
+public class YetAnotherClass;

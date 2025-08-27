@@ -220,9 +220,7 @@ public class EventProjectionTests: OneOffConfigurationsContext, IAsyncLifetime
     }
 }
 
-public class EmptyProjection: EventProjection
-{
-}
+public class EmptyProjection: EventProjection;
 
 public class SimpleProjection: EventProjection
 {
@@ -242,9 +240,7 @@ public class SimpleTransformProjection: EventProjection
         operations.DeleteWhere<User>(x => x.UserName == @event.UserName);
 }
 
-public class OtherCreationEvent: UserCreated
-{
-}
+public class OtherCreationEvent: UserCreated;
 
 public class SimpleTransformProjectionUsingMetadata: EventProjection
 {

@@ -65,6 +65,4 @@ public class Bug_673_multiple_version_assertions: IntegrationContext
     }
 }
 
-public class WhateverEvent
-{
-}
+public class WhateverEvent;

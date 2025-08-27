@@ -117,7 +117,7 @@ public class DEvent : ITabulator
         aggregate.DCount++;
     }
 }
-public class EEvent {}
+public class EEvent;
 
 public class CreateEvent
 {
@@ -153,7 +153,4 @@ public class CreateEvent2
 
 
 
-public class AlternativeCreateEvent
-{
-
-}
+public class AlternativeCreateEvent;

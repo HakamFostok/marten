@@ -101,9 +101,7 @@ public class aggregation_projection_validation_rules
         }).ShouldNotBeNull();
     }
 
-    public class EmptyProjection: SingleStreamProjection<GuidIdentifiedAggregate, Guid>
-    {
-    }
+    public class EmptyProjection: SingleStreamProjection<GuidIdentifiedAggregate, Guid>;
 
 
     public class GuidIdentifiedAggregate

@@ -24,9 +24,7 @@ public class UniqueIndexMultiTenantTests: OneOffConfigurationsContext
         public string Name { get; set; }
     }
 
-    public class ProjectUsingDuplicateField: Project
-    {
-    } //used for duplicatedfield index tests
+    public class ProjectUsingDuplicateField: Project; //used for duplicatedfield index tests
 
     //used for attributes index tests
     public class UniqueCodePerTenant

@@ -579,21 +579,13 @@ public class StartAndStopAggregate: ISoftDeleted
 
 #region sample_custom_aggregate_events
 
-public class Start
-{
-}
+public class Start;
 
-public class End
-{
-}
+public class End;
 
-public class Restart
-{
-}
+public class Restart;
 
-public class Increment
-{
-}
+public class Increment;
 
 #endregion
 

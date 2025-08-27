@@ -12,10 +12,7 @@ using Xunit.Abstractions;
 namespace LinqTests.Acceptance.Support;
 
 [CollectionDefinition("linq")]
-public class LinqCollection: ICollectionFixture<DefaultQueryFixture>
-{
-
-}
+public class LinqCollection: ICollectionFixture<DefaultQueryFixture>;
 
 [Collection("linq")]
 public abstract class LinqTestContext<TSelf>

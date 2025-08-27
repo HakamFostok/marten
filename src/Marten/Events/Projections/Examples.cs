@@ -4,43 +4,29 @@ using JasperFx.Events;
 
 namespace Marten.Events.Projections;
 
-public class SomeAggregate
-{
-}
+public class SomeAggregate;
 
-public class SomeEvent1
-{
-}
+public class SomeEvent1;
 
-public class SomeEvent2
-{
-}
+public class SomeEvent2;
 
 public class SomeEvent3
 {
     public Guid IdToDelete { get; set; }
 }
 
-public class SomeEvent4
-{
-}
+public class SomeEvent4;
 
-public class SomeEvent5
-{
-}
+public class SomeEvent5;
 
 public class SomeDocument1
 {
     public Guid Id { get; set; }
 }
 
-public class SomeDocument2
-{
-}
+public class SomeDocument2;
 
-public class SomeDocument3
-{
-}
+public class SomeDocument3;
 
 public class DocumentAttribute: Attribute
 {

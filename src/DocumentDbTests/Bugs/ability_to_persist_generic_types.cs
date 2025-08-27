@@ -12,9 +12,9 @@ public class GenericTypeToPersist<T>
     public Guid Id { get; set; } = Guid.NewGuid();
 }
 
-public class TypeA { }
+public class TypeA;
 
-public class TypeB { }
+public class TypeB;
 
 public class ability_to_persist_generic_types: BugIntegrationContext
 {

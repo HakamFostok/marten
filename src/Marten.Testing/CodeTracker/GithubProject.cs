@@ -164,6 +164,4 @@ public class GithubProject
     }
 }
 
-public class PlaceHolder
-{
-}
+public class PlaceHolder;

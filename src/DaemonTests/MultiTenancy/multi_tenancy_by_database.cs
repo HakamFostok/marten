@@ -362,9 +362,7 @@ public class DEvent: ITabulator
     }
 }
 
-public class EEvent
-{
-}
+public class EEvent;
 
 public class CreateEvent
 {

@@ -27,8 +27,7 @@ internal class DeletedBeforeParser: IMethodCallParser
     public ISqlFragment Parse(IQueryableMemberCollection memberCollection, IReadOnlyStoreOptions options,
         MethodCallExpression expression)
     {
-        var documentType = memberCollection as DocumentQueryableMemberCollection;
-        if (documentType == null)
+        if (memberCollection is not DocumentQueryableMemberCollection documentType)
         {
             throw new BadLinqExpressionException($"{_method.Name} can only be used to query against documents");
         }

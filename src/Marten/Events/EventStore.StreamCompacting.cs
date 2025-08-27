@@ -152,8 +152,7 @@ public class StreamCompactingRequest<T>
                                                 typeof(T).FullNameInCode());
         }
 
-        var aggregator = projection as IAggregator<T, IQuerySession>;
-        if (aggregator == null)
+        if (projection is not IAggregator<T, IQuerySession> aggregator)
         {
             throw new InvalidOperationException(
                 $"Type {projection.GetType().FullNameInCode()} does not implement interface {typeof(IAggregator<T, IDocumentOperations>).FullNameInCode()}");

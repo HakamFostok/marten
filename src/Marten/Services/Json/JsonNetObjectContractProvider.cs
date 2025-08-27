@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -55,9 +55,7 @@ namespace Marten.Services.Json
 
         private static ObjectConstructor<object> GetObjectConstructor(MethodBase method)
         {
-            var c = method as ConstructorInfo;
-
-            if (c == null)
+            if (method is not ConstructorInfo c)
                 return a => method.Invoke(null, a)!;
 
             if (c.GetParameters().Length == 0)

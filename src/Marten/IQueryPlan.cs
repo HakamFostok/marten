@@ -56,8 +56,7 @@ public abstract class QueryListPlan<T> : IQueryPlan<IReadOnlyList<T>>, IBatchQue
 
     Task<IReadOnlyList<T>> IBatchQueryPlan<IReadOnlyList<T>>.Fetch(IBatchedQuery query)
     {
-        var queryable = Query(query.Parent) as MartenLinqQueryable<T>;
-        if (queryable == null)
+        if (Query(query.Parent) is not MartenLinqQueryable<T> queryable)
             throw new InvalidOperationException("Marten is not able to use this QueryListPlan in batch querying");
 
         var handler = queryable.BuilderListHandler();

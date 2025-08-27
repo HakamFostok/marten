@@ -13,7 +13,7 @@ namespace Marten.Events;
 
 internal class IsArchivedMember: IQueryableMember, IComparableMember, IBooleanMember
 {
-    private static readonly string _locator = "d.is_archived";
+    private const string _locator = "d.is_archived";
 
     public void Apply(ICommandBuilder builder)
     {

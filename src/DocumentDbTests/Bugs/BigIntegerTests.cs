@@ -1,4 +1,4 @@
-﻿using System.Numerics;
+using System.Numerics;
 using System.Threading.Tasks;
 using Marten.Services.Json;
 using Marten.Testing.Harness;
@@ -9,7 +9,7 @@ namespace DocumentDbTests.Bugs;
 
 public class BigIntegerTests : BugIntegrationContext
 {
-    private static readonly string LargerThanLongValue = "123456789012345678901234567890123456789012345678901234567890";
+    private const string LargerThanLongValue = "123456789012345678901234567890123456789012345678901234567890";
 
     [Fact]
     public async Task When_Querying_Using_Newtonsoft_Json_Should_Persist_And_Fetch_BigInteger_Values()

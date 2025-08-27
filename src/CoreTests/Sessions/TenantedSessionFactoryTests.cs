@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using JasperFx;
 using JasperFx.Events;
 using Marten;
@@ -97,8 +97,8 @@ public class TenantedSessionFactoryTests
             TheSame(NonDefault, NonDefault, TenancyStyle.Conjoined),
         };
 
-    private static readonly string Default = StorageConstants.DefaultTenantId;
-    private static readonly string NonDefault = "NON_DEFAULT";
+    private const string Default = StorageConstants.DefaultTenantId;
+    private const string NonDefault = "NON_DEFAULT";
 
     public record Configuration(
         string SessionTenant,

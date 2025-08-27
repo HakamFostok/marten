@@ -58,8 +58,8 @@ public class query_against_child_collections: OneOffConfigurationsContext
     public async Task bug_3392_can_with_deeper_boolean_nesting(){
         //Test case based on https://github.com/JasperFx/marten/issues/3392
         await buildUpTargetData();
-        bool isTrue = true;
-        bool isFalse = false;
+        const bool isTrue = true;
+        const bool isFalse = false;
         var random = new Random();
         var randomtarget = targets[random.Next(targets.Length)];
         var intList = new List<int>(){randomtarget.Number};

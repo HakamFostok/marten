@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using JasperFx;
 using Marten;
@@ -20,7 +20,7 @@ public class create_database_Tests : IDisposable
     {
         #region sample_marten_create_database
         var maintenanceConnectionString = ConnectionSource.ConnectionString;
-        var applicationConnectionString = "";
+        const string applicationConnectionString = "";
         var builder = Host.CreateApplicationBuilder();
         builder.Services.AddMarten(options =>
         {

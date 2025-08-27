@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -152,7 +152,7 @@ public class custom_grouper_with_document_session: OneOffConfigurationsContext
         // Invite => Premium
         // --------------------------------
 
-        var loginFeatureToggle = "Login";
+        const string loginFeatureToggle = "Login";
         var loginFeatureToggledOnFreeLicense =
             new LicenseFeatureToggled(freeLicenseCreated.LicenseId, loginFeatureToggle);
         theSession.Events.Append(loginFeatureToggledOnFreeLicense.LicenseId, loginFeatureToggledOnFreeLicense);
@@ -162,7 +162,7 @@ public class custom_grouper_with_document_session: OneOffConfigurationsContext
         theSession.Events.Append(loginFeatureToggledOnPremiumLicense.LicenseId,
             loginFeatureToggledOnPremiumLicense);
 
-        var inviteFeatureToggle = "Invite";
+        const string inviteFeatureToggle = "Invite";
         var inviteToggledOnPremiumLicense =
             new LicenseFeatureToggled(premiumLicenseCreated.LicenseId, inviteFeatureToggle);
         theSession.Events.Append(inviteToggledOnPremiumLicense.LicenseId, inviteToggledOnPremiumLicense);

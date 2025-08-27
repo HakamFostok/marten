@@ -35,7 +35,7 @@ public class where_clauses: LinqTestContext<where_clauses>
         @where(x => null == x.NullableNumber);
         @where(x => x.Number == 1 || 2 == x.Number);
 
-        var num = 2;
+        const int num = 2;
         @where(x => num == x.Number);
 
         @where(x => x.Long == 1);

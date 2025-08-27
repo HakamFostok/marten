@@ -295,7 +295,7 @@ public class SessionOptionsTests: OneOffConfigurationsContext
     [Fact]
     public void Session_Should_Not_Track_Open_Telemetry_Events_By_Default()
     {
-        var commandRunnerMode = CommandRunnerMode.ReadOnly;
+        const CommandRunnerMode commandRunnerMode = CommandRunnerMode.ReadOnly;
         var options = new SessionOptions();
         var connectionLifetime = options.Initialize(theStore, commandRunnerMode, new OpenTelemetryOptions(){ TrackConnections = TrackLevel.None });
         connectionLifetime.ShouldNotBeOfType<EventTracingConnectionLifetime>();
@@ -304,7 +304,7 @@ public class SessionOptionsTests: OneOffConfigurationsContext
     [Fact]
     public void Session_Should_Not_Track_Open_Telemetry_Events_When_Asked_To_Do_So_If_No_Listeners_Are_configured()
     {
-        var commandRunnerMode = CommandRunnerMode.ReadOnly;
+        const CommandRunnerMode commandRunnerMode = CommandRunnerMode.ReadOnly;
         var options = new SessionOptions();
         var connectionLifetime = options.Initialize(theStore, commandRunnerMode, new OpenTelemetryOptions(){ TrackConnections = TrackLevel.Normal });
         connectionLifetime.ShouldNotBeOfType<EventTracingConnectionLifetime>();
@@ -319,7 +319,7 @@ public class SessionOptionsTests: OneOffConfigurationsContext
             Sample = (ref ActivityCreationOptions<ActivityContext> _) => ActivitySamplingResult.AllData,
         };
         ActivitySource.AddActivityListener(listener);
-            var commandRunnerMode = CommandRunnerMode.ReadOnly;
+        const CommandRunnerMode commandRunnerMode = CommandRunnerMode.ReadOnly;
         var options = new SessionOptions();
         var connectionLifetime = options.Initialize(theStore, commandRunnerMode, new OpenTelemetryOptions(){ TrackConnections = TrackLevel.Normal });
         connectionLifetime.ShouldBeOfType<EventTracingConnectionLifetime>();

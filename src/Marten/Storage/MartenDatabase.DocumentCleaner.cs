@@ -195,7 +195,7 @@ END; $$;
 
         if (Options.Events.TenancyStyle == TenancyStyle.Conjoined && tenantId.IsNotEmpty())
         {
-            var tenantPart = " AND tenant_id = :tenantId";
+            const string tenantPart = " AND tenant_id = :tenantId";
             streamsWhere += tenantPart;
             eventsWhere += tenantPart;
         }

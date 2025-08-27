@@ -161,7 +161,7 @@ public class multi_tenancy_and_event_capture: OneOffConfigurationsContext
     {
         InitStore(tenancyStyle, StreamIdentity.AsString);
 
-        var stream = "SomeStream";
+        const string stream = "SomeStream";
         using (var session = theStore.LightweightSession("Green"))
         {
             session.Events.Append(stream, new MembersJoined(), new MembersJoined());
@@ -184,7 +184,7 @@ public class multi_tenancy_and_event_capture: OneOffConfigurationsContext
     {
         InitStore(tenancyStyle, StreamIdentity.AsString);
 
-        var stream = "SomeStream";
+        const string stream = "SomeStream";
         await using (var session = theStore.LightweightSession("Green"))
         {
             session.Events.Append(stream, new MembersJoined(), new MembersJoined());

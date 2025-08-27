@@ -187,7 +187,7 @@ namespace DocumentDbTests.Metadata
             });
 
             var doc = new DocWithMeta();
-            var tenant = "TENANT_A";
+            const string tenant = "TENANT_A";
 
             await using (var session = theStore.LightweightSession(tenant))
             {
@@ -222,7 +222,7 @@ namespace DocumentDbTests.Metadata
             });
 
             var doc = new DocWithMeta();
-            var tenant = "TENANT_A";
+            const string tenant = "TENANT_A";
 
             await theStore.BulkInsertAsync(tenant, new[] { doc });
 

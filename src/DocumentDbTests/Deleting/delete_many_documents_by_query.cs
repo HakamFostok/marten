@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 using Marten;
@@ -123,8 +123,8 @@ public class delete_many_documents_by_query : IntegrationContext
         var targets = new[] { new FailureInLife { Id = 1, What = 2 } };
 
         await theStore.BulkInsertAsync(targets);
-        var id = 1;
-        var what = 2;
+        const int id = 1;
+        const int what = 2;
 
         theSession.DeleteWhere<FailureInLife>(x => x.Id == id && x.What == what);
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -51,7 +51,7 @@ public class Bug_1258_cannot_derive_updates_for_objects: BugIntegrationContext
         await using (var conn = new NpgsqlConnection(ConnectionSource.ConnectionString))
         {
             await conn.OpenAsync();
-            var sql = @"
+            const string sql = @"
                     DROP CAST IF EXISTS (text AS cust_type);
                     DROP CAST IF EXISTS (cust_type AS text);
                     DROP OPERATOR CLASS IF EXISTS cust_type_ops USING btree;

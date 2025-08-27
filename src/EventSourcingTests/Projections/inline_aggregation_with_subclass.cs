@@ -23,7 +23,7 @@ public class inline_aggregation_with_subclass: OneOffConfigurationsContext
     [Fact]
     public async Task can_create_subclass_projection()
     {
-        var description = "FooDescription";
+        const string description = "FooDescription";
 
         var streamId = theSession.Events.StartStream(new FooACreated { Description = description }).Id;
         await theSession.SaveChangesAsync();
@@ -37,7 +37,7 @@ public class inline_aggregation_with_subclass: OneOffConfigurationsContext
     [Fact]
     public async Task can_query_subclass_root()
     {
-        var description = "FooDescription";
+        const string description = "FooDescription";
 
         var streamId = theSession.Events.StartStream(new FooACreated { Description = description }).Id;
         await theSession.SaveChangesAsync();

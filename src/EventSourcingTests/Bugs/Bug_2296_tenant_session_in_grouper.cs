@@ -34,7 +34,7 @@ public class Bug_2296_tenant_session_in_grouper: OneOffConfigurationsContext
         using var daemon = await theStore.BuildProjectionDaemonAsync();
         await daemon.StartAllAsync();
 
-        var streamKey = "stream1";
+        const string streamKey = "stream1";
 
         tenantedSession.Events.StartStream(streamKey,
             new CountEvent { Tag = "Foo" },

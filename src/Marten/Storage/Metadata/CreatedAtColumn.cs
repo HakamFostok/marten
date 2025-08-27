@@ -19,7 +19,7 @@ internal class CreatedAtColumn: MetadataColumn<DateTimeOffset>, ISelectableColum
         GeneratedMethod sync,
         int index, DocumentMapping mapping)
     {
-        var variableName = "created";
+        const string variableName = "created";
         var memberType = typeof(DateTimeOffset);
 
         if (Member == null)

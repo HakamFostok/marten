@@ -44,7 +44,7 @@ internal class TenantIdColumn: MetadataColumn<string>, ISelectableColumn, IEvent
         GeneratedMethod sync,
         int index, DocumentMapping mapping)
     {
-        var variableName = "tenantId";
+        const string variableName = "tenantId";
         var memberType = typeof(string);
 
         if (Member == null)

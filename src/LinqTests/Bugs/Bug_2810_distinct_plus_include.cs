@@ -20,10 +20,10 @@ public class Bug_2810_distinct_plus_include : BugIntegrationContext
     [Fact]
     public async Task do_not_blow_up()
     {
-        var exportId = 34;
+        const int exportId = 34;
         var includedTableDocuments = new List<IncludedTable>();
-        var skip = 30;
-        var take = 10;
+        const int skip = 30;
+        const int take = 10;
 
         theSession.Logger = new TestOutputMartenLogger(_output);
 

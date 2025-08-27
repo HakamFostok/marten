@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -44,7 +44,7 @@ public class ConjoinedTenancyProjectionsTests: IntegrationContext
 
         var organisationId = Guid.NewGuid();
         var tenantId = Guid.NewGuid().ToString();
-        var resourceName = "Test";
+        const string resourceName = "Test";
 
         var resourceId = await StartStreamForTenant(tenantId, new ResourceCreatedEvent(resourceName, organisationId));
         await AssertProjectionUpdatedForTenant(tenantId, ResourceState.Enabled);
@@ -116,7 +116,7 @@ public class ConjoinedTenancyProjectionsTests: IntegrationContext
 
         var tenantId = Guid.NewGuid().ToString();
         var companyLocationId = Guid.NewGuid();
-        var companyLocationName = "New York";
+        const string companyLocationName = "New York";
 
         CompanyLocationCustomProjection.ExpectedTenant = tenantId;
 

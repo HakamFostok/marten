@@ -214,8 +214,8 @@ public class statistics_and_paged_list: IntegrationContext
     public void can_return_paged_result()
     {
         #region sample_to_paged_list
-        var pageNumber = 2;
-        var pageSize = 10;
+        const int pageNumber = 2;
+        const int pageSize = 10;
 
         var pagedList = theSession.Query<Target>().ToPagedList(pageNumber, pageSize);
 
@@ -238,8 +238,8 @@ public class statistics_and_paged_list: IntegrationContext
     public async Task can_return_paged_result_async()
     {
         #region sample_to_paged_list_async
-        var pageNumber = 2;
-        var pageSize = 10;
+        const int pageNumber = 2;
+        const int pageSize = 10;
 
         var pagedList = await theSession.Query<Target>().ToPagedListAsync(pageNumber, pageSize);
         #endregion
@@ -251,9 +251,9 @@ public class statistics_and_paged_list: IntegrationContext
     public async Task invalid_pagenumber_should_throw_exception(Func<IQueryable<Target>, int, int, Task<IPagedList<Target>>> toPagedList)
     {
         // invalid page number
-        var pageNumber = 0;
+        const int pageNumber = 0;
 
-        var pageSize = 10;
+        const int pageSize = 10;
 
         var ex =
             await Should.ThrowAsync<ArgumentOutOfRangeException>(
@@ -265,10 +265,10 @@ public class statistics_and_paged_list: IntegrationContext
     [ClassData(typeof(ToPagedListData<Target>))]
     public async Task invalid_pagesize_should_throw_exception(Func<IQueryable<Target>, int, int, Task<IPagedList<Target>>> toPagedList)
     {
-        var pageNumber = 1;
+        const int pageNumber = 1;
 
         // invalid page size
-        var pageSize = 0;
+        const int pageSize = 0;
 
         var ex =
             await Should.ThrowAsync<ArgumentOutOfRangeException>(
@@ -281,9 +281,9 @@ public class statistics_and_paged_list: IntegrationContext
     public async Task check_computed_pagecount(Func<IQueryable<Target>, int, int, Task<IPagedList<Target>>> toPagedList)
     {
         // page number ouside the page range, page range is between 1 and 10 for the sample
-        var pageNumber = 1;
+        const int pageNumber = 1;
 
-        var pageSize = 10;
+        const int pageSize = 10;
 
         var expectedPageCount = theSession.Query<Target>().Count()/pageSize;
 
@@ -295,9 +295,9 @@ public class statistics_and_paged_list: IntegrationContext
     [ClassData(typeof(ToPagedListData<Target>))]
     public async Task check_total_items_count(Func<IQueryable<Target>, int, int, Task<IPagedList<Target>>> toPagedList)
     {
-        var pageNumber = 1;
+        const int pageNumber = 1;
 
-        var pageSize = 10;
+        const int pageSize = 10;
 
         var expectedTotalItemsCount = theSession.Query<Target>().Count();
 
@@ -309,11 +309,11 @@ public class statistics_and_paged_list: IntegrationContext
     [ClassData(typeof(ToPagedListData<Target>))]
     public async Task check_has_previous_page(Func<IQueryable<Target>, int, int, Task<IPagedList<Target>>> toPagedList)
     {
-        var pageNumber = 2;
+        const int pageNumber = 2;
 
-        var pageSize = 10;
+        const int pageSize = 10;
 
-        var expectedHasPreviousPage = true;
+        const bool expectedHasPreviousPage = true;
 
         var pagedList = await toPagedList(theSession.Query<Target>(), pageNumber, pageSize);
         pagedList.HasPreviousPage.ShouldBe(expectedHasPreviousPage);
@@ -323,11 +323,11 @@ public class statistics_and_paged_list: IntegrationContext
     [ClassData(typeof(ToPagedListData<Target>))]
     public async Task check_has_no_previous_page(Func<IQueryable<Target>, int, int, Task<IPagedList<Target>>> toPagedList)
     {
-        var pageNumber = 1;
+        const int pageNumber = 1;
 
-        var pageSize = 10;
+        const int pageSize = 10;
 
-        var expectedHasPreviousPage = false;
+        const bool expectedHasPreviousPage = false;
 
         var pagedList = await toPagedList(theSession.Query<Target>(), pageNumber, pageSize);
         pagedList.HasPreviousPage.ShouldBe(expectedHasPreviousPage);
@@ -337,11 +337,11 @@ public class statistics_and_paged_list: IntegrationContext
     [ClassData(typeof(ToPagedListData<Target>))]
     public async Task check_has_next_page(Func<IQueryable<Target>, int, int, Task<IPagedList<Target>>> toPagedList)
     {
-        var pageNumber = 1;
+        const int pageNumber = 1;
 
-        var pageSize = 10;
+        const int pageSize = 10;
 
-        var expectedHasNextPage = true;
+        const bool expectedHasNextPage = true;
 
         var pagedList = await toPagedList(theSession.Query<Target>(), pageNumber, pageSize);
         pagedList.HasNextPage.ShouldBe(expectedHasNextPage);
@@ -351,11 +351,11 @@ public class statistics_and_paged_list: IntegrationContext
     [ClassData(typeof(ToPagedListData<Target>))]
     public async Task check_has_no_next_page(Func<IQueryable<Target>, int, int, Task<IPagedList<Target>>> toPagedList)
     {
-        var pageNumber = 10;
+        const int pageNumber = 10;
 
-        var pageSize = 10;
+        const int pageSize = 10;
 
-        var expectedHasNextPage = false;
+        const bool expectedHasNextPage = false;
 
         var pagedList = await toPagedList(theSession.Query<Target>(), pageNumber, pageSize);
         pagedList.HasNextPage.ShouldBe(expectedHasNextPage);
@@ -365,11 +365,11 @@ public class statistics_and_paged_list: IntegrationContext
     [ClassData(typeof(ToPagedListData<Target>))]
     public async Task check_is_first_page(Func<IQueryable<Target>, int, int, Task<IPagedList<Target>>> toPagedList)
     {
-        var pageNumber = 1;
+        const int pageNumber = 1;
 
-        var pageSize = 10;
+        const int pageSize = 10;
 
-        var expectedIsFirstPage = true;
+        const bool expectedIsFirstPage = true;
 
         var pagedList = await toPagedList(theSession.Query<Target>(), pageNumber, pageSize);
         pagedList.IsFirstPage.ShouldBe(expectedIsFirstPage);
@@ -379,11 +379,11 @@ public class statistics_and_paged_list: IntegrationContext
     [ClassData(typeof(ToPagedListData<Target>))]
     public async Task check_is_not_first_page(Func<IQueryable<Target>, int, int, Task<IPagedList<Target>>> toPagedList)
     {
-        var pageNumber = 2;
+        const int pageNumber = 2;
 
-        var pageSize = 10;
+        const int pageSize = 10;
 
-        var expectedIsFirstPage = false;
+        const bool expectedIsFirstPage = false;
 
         var pagedList = await toPagedList(theSession.Query<Target>(), pageNumber, pageSize);
         pagedList.IsFirstPage.ShouldBe(expectedIsFirstPage);
@@ -393,11 +393,11 @@ public class statistics_and_paged_list: IntegrationContext
     [ClassData(typeof(ToPagedListData<Target>))]
     public async Task check_is_last_page(Func<IQueryable<Target>, int, int, Task<IPagedList<Target>>> toPagedList)
     {
-        var pageNumber = 10;
+        const int pageNumber = 10;
 
-        var pageSize = 10;
+        const int pageSize = 10;
 
-        var expectedIsLastPage = true;
+        const bool expectedIsLastPage = true;
 
         var pagedList = await toPagedList(theSession.Query<Target>(), pageNumber, pageSize);
         pagedList.IsLastPage.ShouldBe(expectedIsLastPage);
@@ -407,11 +407,11 @@ public class statistics_and_paged_list: IntegrationContext
     [ClassData(typeof(ToPagedListData<Target>))]
     public async Task check_is_not_last_page(Func<IQueryable<Target>, int, int, Task<IPagedList<Target>>> toPagedList)
     {
-        var pageNumber = 1;
+        const int pageNumber = 1;
 
-        var pageSize = 10;
+        const int pageSize = 10;
 
-        var expectedIsLastPage = false;
+        const bool expectedIsLastPage = false;
 
         var pagedList = await toPagedList(theSession.Query<Target>(), pageNumber, pageSize);
         pagedList.IsLastPage.ShouldBe(expectedIsLastPage);
@@ -421,11 +421,11 @@ public class statistics_and_paged_list: IntegrationContext
     [ClassData(typeof(ToPagedListData<Target>))]
     public async Task check_first_item_on_page(Func<IQueryable<Target>, int, int, Task<IPagedList<Target>>> toPagedList)
     {
-        var pageNumber = 2;
+        const int pageNumber = 2;
 
-        var pageSize = 10;
+        const int pageSize = 10;
 
-        var expectedFirstItemOnPage = 11;
+        const int expectedFirstItemOnPage = 11;
 
         var pagedList = await toPagedList(theSession.Query<Target>(), pageNumber, pageSize);
         pagedList.FirstItemOnPage.ShouldBe(expectedFirstItemOnPage);
@@ -435,11 +435,11 @@ public class statistics_and_paged_list: IntegrationContext
     [ClassData(typeof(ToPagedListData<Target>))]
     public async Task check_last_item_on_page(Func<IQueryable<Target>, int, int, Task<IPagedList<Target>>> toPagedList)
     {
-        var pageNumber = 2;
+        const int pageNumber = 2;
 
-        var pageSize = 10;
+        const int pageSize = 10;
 
-        var expectedLastItemOnPage = 20;
+        const int expectedLastItemOnPage = 20;
 
         var pagedList = await toPagedList(theSession.Query<Target>(), pageNumber, pageSize);
         pagedList.LastItemOnPage.ShouldBe(expectedLastItemOnPage);
@@ -454,9 +454,9 @@ public class statistics_and_paged_list: IntegrationContext
 
         await BuildUpDocumentWithZeroRecords();
 
-        var pageNumber = 1;
+        const int pageNumber = 1;
 
-        var pageSize = 10;
+        const int pageSize = 10;
 
         var pagedList = await toPagedList(theSession.Query<PaginationTestDocument>(), pageNumber, pageSize);
         pagedList.TotalItemCount.ShouldBe(0);
@@ -475,8 +475,8 @@ public class statistics_and_paged_list: IntegrationContext
     [ClassData(typeof(ToPagedListData<Target>))]
     public async Task check_query_with_where_clause_followed_by_to_pagedlist(Func<IQueryable<Target>, int, int, Task<IPagedList<Target>>> toPagedList)
     {
-        var pageNumber = 2;
-        var pageSize = 10;
+        const int pageNumber = 2;
+        const int pageSize = 10;
 
         var pagedList = await theSession.Query<Target>().Where(x=>x.Flag).ToPagedListAsync(pageNumber, pageSize);
     }

@@ -179,8 +179,8 @@ public class delete_single_event_stream: OneOffConfigurationsContext
             _.Events.StreamIdentity = StreamIdentity.AsString;
         });
 
-        var stream1 = "one";
-        var stream2 = "two";
+        const string stream1 = "one";
+        const string stream2 = "two";
 
         using (var session = theStore.LightweightSession())
         {
@@ -215,8 +215,8 @@ public class delete_single_event_stream: OneOffConfigurationsContext
             _.Events.TenancyStyle = TenancyStyle.Conjoined;
         });
 
-        var stream1 = "one";
-        var stream2 = "two";
+        const string stream1 = "one";
+        const string stream2 = "two";
 
         using (var session = theStore.LightweightSession("one"))
         {

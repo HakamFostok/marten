@@ -25,7 +25,7 @@ public class
         var joined = new MembersJoined { Members = new[] { "Rand", "Matt", "Perrin", "Thom" } };
         var departed = new MembersDeparted { Members = new[] { "Thom" } };
 
-        var id = "First";
+        const string id = "First";
 
         theSession.Events.StartStream<Quest>(id, joined, departed);
         await theSession.SaveChangesAsync();
@@ -49,7 +49,7 @@ public class
         var joined = new MembersJoined { Members = new[] { "Rand", "Matt", "Perrin", "Thom" } };
         var departed = new MembersDeparted { Members = new[] { "Thom" } };
 
-        var id = "Second";
+        const string id = "Second";
         theSession.Events.StartStream<Quest>(id, joined, departed);
         await theSession.SaveChangesAsync();
 
@@ -74,7 +74,7 @@ public class
         var joined = new MembersJoined { Members = new[] { "Rand", "Matt", "Perrin", "Thom" } };
         var departed = new MembersDeparted { Members = new[] { "Thom" } };
 
-        var id = "Third";
+        const string id = "Third";
         theSession.Events.StartStream<Quest>(id, joined, departed);
         await theSession.SaveChangesAsync();
 
@@ -100,7 +100,7 @@ public class
         var joined = new MembersJoined { Members = new[] { "Rand", "Matt", "Perrin", "Thom" } };
         var departed = new MembersDeparted { Members = new[] { "Thom" } };
 
-        var id = "Fourth";
+        const string id = "Fourth";
         theSession.Events.StartStream<Quest>(id, joined, departed);
         await theSession.SaveChangesAsync();
 
@@ -121,7 +121,7 @@ public class
     [Fact]
     public async Task live_aggregate_equals_inlined_aggregate_without_hidden_contracts()
     {
-        var questId = "Fifth";
+        const string questId = "Fifth";
 
         using (var session = theStore.LightweightSession())
         {
@@ -149,7 +149,7 @@ public class
     [Fact]
     public async Task open_persisted_stream_in_new_store_with_same_settings()
     {
-        var questId = "Sixth";
+        const string questId = "Sixth";
 
         await theStore.Advanced.Clean.DeleteAllEventDataAsync();
         await theStore.Advanced.Clean.DeleteDocumentsByTypeAsync(typeof(QuestPartyWithStringIdentifier));
@@ -223,7 +223,7 @@ public class
     [Fact]
     public async Task query_before_saving()
     {
-        var questId = "Seventh";
+        const string questId = "Seventh";
 
         await theStore.Advanced.Clean.DeleteAllEventDataAsync();
         await theStore.Advanced.Clean.DeleteDocumentsByTypeAsync(typeof(QuestPartyWithStringIdentifier));
@@ -254,7 +254,7 @@ public class
         await theStore.Advanced.Clean.DeleteAllEventDataAsync();
         await theStore.Advanced.Clean.DeleteDocumentsByTypeAsync(typeof(QuestPartyWithStringIdentifier));
 
-        var questId = "Eighth";
+        const string questId = "Eighth";
 
         await using (var session = theStore.LightweightSession())
         {
@@ -283,7 +283,7 @@ public class
         var joined = new MembersJoined { Members = new[] { "Rand", "Matt", "Perrin", "Thom" } };
         var departed = new MembersDeparted { Members = new[] { "Thom" } };
 
-        var id = "Tenth";
+        const string id = "Tenth";
         session.Events.StartStream<Quest>(id, joined, departed);
         await session.SaveChangesAsync();
 
@@ -303,7 +303,7 @@ public class
         var joined = new MembersJoined { Members = new[] { "Rand", "Matt", "Perrin", "Thom" } };
         var departed = new MembersDeparted { Members = new[] { "Thom" } };
 
-        var id = "Eleventh";
+        const string id = "Eleventh";
         session.Events.StartStream<Quest>(id, joined);
         session.Events.Append(id, departed);
 
@@ -321,7 +321,7 @@ public class
     [Fact]
     public async Task capture_events_to_an_existing_stream_and_fetch_the_events_back()
     {
-        var id = "Twelth";
+        const string id = "Twelth";
         var started = new QuestStarted();
 
         using (var session = theStore.LightweightSession())
@@ -359,7 +359,7 @@ public class
         var joined = new MembersJoined { Members = new[] { "Rand", "Matt", "Perrin", "Thom" } };
         var departed = new MembersDeparted { Members = new[] { "Thom" } };
 
-        var id = "Thirteen";
+        const string id = "Thirteen";
         session.Events.StartStream<Quest>(id, joined, departed);
         await session.SaveChangesAsync();
 
@@ -380,7 +380,7 @@ public class
         var joined = new MembersJoined { Members = new[] { "Rand", "Matt", "Perrin", "Thom" } };
         var departed = new MembersDeparted { Members = new[] { "Thom" } };
 
-        var id = "Fourteen";
+        const string id = "Fourteen";
         session.Events.StartStream<Quest>(id, joined);
         session.Events.Append(id, departed);
 
@@ -398,7 +398,7 @@ public class
     [Fact]
     public async Task capture_events_to_an_existing_stream_and_fetch_the_events_back_in_another_database_schema()
     {
-        var id = "Fifteen";
+        const string id = "Fifteen";
         var started = new QuestStarted();
 
         using (var session = theStore.LightweightSession())
@@ -431,7 +431,7 @@ public class
     [Fact]
     public async Task assert_on_max_event_id_on_event_stream_append()
     {
-        var id = "Sixteen";
+        const string id = "Sixteen";
         var started = new QuestStarted();
 
         using var session = theStore.LightweightSession();

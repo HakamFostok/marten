@@ -11,7 +11,7 @@ public class Bug_3116_more_expression_to_constant_issues : BugIntegrationContext
     [Fact]
     public async Task query_works()
     {
-        int from = 0;
+        const int from = 0;
         const int batchSize = 100;
 
         await theStore.BulkInsertDocumentsAsync(Target.GenerateRandomData(100));

@@ -16,7 +16,7 @@ internal class DocumentTypeColumn: MetadataColumn<string>, ISelectableColumn
         GeneratedMethod sync, int index,
         DocumentMapping mapping)
     {
-        var variableName = "docType";
+        const string variableName = "docType";
         var memberType = typeof(string);
 
         if (Member == null)

@@ -39,7 +39,7 @@ public class Bug_1245_include_plus_full_text_search: BugIntegrationContext
     [PgVersionTargetedFact(MinimumVersion = "10.0")]
     public async Task can_do_include_with_full_text_search()
     {
-        var term = "content";
+        const string term = "content";
         var userDictionary = new Dictionary<Guid, Bug1245User>();
         using var session = theStore.LightweightSession();
         for (var i = 0; i < 3; i++)
@@ -65,7 +65,7 @@ public class Bug_1245_include_plus_full_text_search: BugIntegrationContext
     [PgVersionTargetedFact(MinimumVersion = "10.0")]
     public async Task can_do_include_with_full_text_search_async()
     {
-        var term = "content";
+        const string term = "content";
         var userDictionary = new Dictionary<Guid, Bug1245User>();
         await using var session = theStore.LightweightSession();
         for (var i = 0; i < 3; i++)

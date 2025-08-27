@@ -194,7 +194,7 @@ public class dictionary_bugs : OneOffConfigurationsContext
         // GH-2951
         StoreOptions(opts => opts.UseSystemTextJsonForSerialization(EnumStorage.AsString));
 
-        var desiredValue = ItemStatus.Available;
+        const ItemStatus desiredValue = ItemStatus.Available;
         await theSession.Query<Order>().Where(x => x.StringEnumMap["1"] == desiredValue).ToListAsync();
     }
 }

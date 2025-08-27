@@ -276,7 +276,7 @@ public class computed_indexes: OneOffConfigurationsContext
             x.Name = "mt_banana_index_created_by_nigel";
         }));
 
-        var testString = "MiXeD cAsE sTrInG";
+        const string testString = "MiXeD cAsE sTrInG";
 
         await using (var session = theStore.LightweightSession())
         {

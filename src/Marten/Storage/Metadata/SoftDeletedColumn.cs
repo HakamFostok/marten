@@ -19,7 +19,7 @@ internal class SoftDeletedColumn: MetadataColumn<bool>, ISelectableColumn
         GeneratedMethod sync,
         int index, DocumentMapping mapping)
     {
-        var variableName = "isDeleted";
+        const string variableName = "isDeleted";
         var memberType = typeof(bool);
 
         if (Member == null)

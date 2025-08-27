@@ -1026,7 +1026,7 @@ public class patching_api: OneOffConfigurationsContext
         await theSession.SaveChangesAsync();
 
         // First verify that modifying the source updates the duplicate
-        var newValue = "modified source";
+        const string newValue = "modified source";
         theSession.Patch<Target>(target.Id).Set(x => x.String, newValue);
         await theSession.SaveChangesAsync();
 
@@ -1071,7 +1071,7 @@ public class patching_api: OneOffConfigurationsContext
         await theSession.SaveChangesAsync();
 
         // First verify that modifying the source updates the duplicate
-        var newValue = "modified source";
+        const string newValue = "modified source";
         theSession.Patch<Target>(target.Id).Set(x => x.Inner.String, newValue);
         await theSession.SaveChangesAsync();
 

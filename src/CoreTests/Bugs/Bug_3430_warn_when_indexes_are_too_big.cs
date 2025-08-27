@@ -13,7 +13,7 @@ public class Bug_3430_warn_when_indexes_are_too_big : BugIntegrationContext
     [Fact]
     public async Task get_useful_warning_from_apply_all_changes()
     {
-        var indexName = "testmodel_rm_index_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long";
+        const string indexName = "testmodel_rm_index_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long";
 
         StoreOptions(opts =>
         {
@@ -35,7 +35,7 @@ public class Bug_3430_warn_when_indexes_are_too_big : BugIntegrationContext
     [Fact]
     public async Task get_useful_warning_from_ensure_storage_exists()
     {
-        var indexName = "testmodel_rm_index_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long";
+        const string indexName = "testmodel_rm_index_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long_long";
 
         StoreOptions(opts =>
         {

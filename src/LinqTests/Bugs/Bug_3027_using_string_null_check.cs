@@ -24,7 +24,7 @@ public class Bug_3027_using_string_null_check : BugIntegrationContext
 
         theSession.Store(new Bug3027Object(Guid.NewGuid(), guid, "sometext"));
         await theSession.SaveChangesAsync();
-        string? str = null;
+        const string? str = null;
 
         theSession.Logger = new TestOutputMartenLogger(_output);
 

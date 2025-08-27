@@ -272,8 +272,8 @@ public class bulk_loading_Tests : OneOffConfigurationsContext, IAsyncLifetime
 
         var data = Target.GenerateRandomData(100).ToArray();
 
-        var tenant1 = "tenant_1";
-        var tenant2 = "tenant_2";
+        const string tenant1 = "tenant_1";
+        const string tenant2 = "tenant_2";
 
         await theStore.BulkInsertAsync(tenant1, data, BulkInsertMode.OverwriteExisting);
         await theStore.BulkInsertAsync(tenant2, data, BulkInsertMode.OverwriteExisting);

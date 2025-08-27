@@ -61,7 +61,7 @@ public class SimpleExpressionTests
     [Fact]
     public void parse_variable_from_outside()
     {
-        var name = "foo";
+        const string name = "foo";
 
         var expression = parse(() => name);
 
@@ -72,7 +72,7 @@ public class SimpleExpressionTests
     [Fact]
     public void parse_variable_from_outside_with_additional_methods()
     {
-        var name = "foo";
+        const string name = "foo";
 
         var expression = parse(() => name.ToUpper());
 

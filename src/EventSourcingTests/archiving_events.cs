@@ -585,7 +585,7 @@ public class archiving_events: OneOffConfigurationsContext
     public async Task using_with_conjoined_tenancy_and_for_tenant_guid_identity()
     {
         var streamKey = Guid.NewGuid();
-        var tenantId = "test-tenant";
+        const string tenantId = "test-tenant";
 
         StoreOptions(opts =>
         {

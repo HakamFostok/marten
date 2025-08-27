@@ -121,8 +121,8 @@ public class VersionTrackerTests
     [Fact]
     public void store_and_retrieve_revision()
     {
-        var intVersion = 3;
-        var stringVersion = 4;
+        const int intVersion = 3;
+        const int stringVersion = 4;
         theTracker.StoreRevision<IntDoc, int>(intDoc.Id, intVersion);
         theTracker.StoreRevision<StringDoc, string>(stringDoc.Id, stringVersion);
 
@@ -136,8 +136,8 @@ public class VersionTrackerTests
     [Fact]
     public void override_the_revision()
     {
-        var intVersion = 3;
-        var intVersion2 = 11;
+        const int intVersion = 3;
+        const int intVersion2 = 11;
         theTracker.StoreRevision<IntDoc, int>(intDoc.Id, intVersion);
         theTracker.StoreRevision<IntDoc, int>(intDoc.Id, intVersion2);
 
@@ -149,8 +149,8 @@ public class VersionTrackerTests
     [Fact]
     public void store_and_then_clear_revision()
     {
-        var intVersion = 12;
-        var stringVersion = 25;
+        const int intVersion = 12;
+        const int stringVersion = 25;
         theTracker.StoreRevision<IntDoc, int>(intDoc.Id, intVersion);
         theTracker.StoreRevision<StringDoc, string>(stringDoc.Id, stringVersion);
 

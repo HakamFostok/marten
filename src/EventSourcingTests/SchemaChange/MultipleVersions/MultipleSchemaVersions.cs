@@ -28,7 +28,7 @@ public class MultipleSchemaVersions: OneOffConfigurationsContext
         var clientId = Guid.NewGuid();
         var productId = Guid.NewGuid();
         var currentQuantity = 3;
-        var price = 1.23m;
+        const decimal price = 1.23m;
 
         StoreOptions(options =>
         {
@@ -75,7 +75,7 @@ public class MultipleSchemaVersions: OneOffConfigurationsContext
         var clientId = Guid.NewGuid();
         var productId = Guid.NewGuid();
         var currentQuantity = 3;
-        var price = 1.23m;
+        const decimal price = 1.23m;
 
         StoreOptions(options =>
         {
@@ -144,7 +144,7 @@ public class MultipleSchemaVersions: OneOffConfigurationsContext
             ////////////////////////////////////////////////////////
             // 2.2. Append Event with V2 schema
             ////////////////////////////////////////////////////////
-            var additionalQuantity = 2;
+            const int additionalQuantity = 2;
             session.Events.Append(shoppingCartId,
                 new V2.WithTheSameName.ProductItemAddedToShoppingCart(
                     shoppingCartId,
@@ -223,7 +223,7 @@ public class MultipleSchemaVersions: OneOffConfigurationsContext
             ////////////////////////////////////////////////////////
             // 3.2. Append Event with V3 schema
             ////////////////////////////////////////////////////////
-            var additionalQuantity = 4;
+            const int additionalQuantity = 4;
             session.Events.Append(shoppingCartId,
                 new V3.WithTheSameName.ProductItemAddedToShoppingCart(
                     shoppingCartId,
@@ -304,7 +304,7 @@ public class MultipleSchemaVersions: OneOffConfigurationsContext
             ////////////////////////////////////////////////////////
             // 2.2. Append Event with V2 schema
             ////////////////////////////////////////////////////////
-            var additionalQuantity = 2;
+            const int additionalQuantity = 2;
             session.Events.Append(shoppingCartId,
                 new V2.WithDifferentName.ProductItemAddedToShoppingCartV2(
                     shoppingCartId,
@@ -382,7 +382,7 @@ public class MultipleSchemaVersions: OneOffConfigurationsContext
             ////////////////////////////////////////////////////////
             // 3.2. Append Event with V3 schema
             ////////////////////////////////////////////////////////
-            var additionalQuantity = 4;
+            const int additionalQuantity = 4;
             session.Events.Append(shoppingCartId,
                 new V3.WithDifferentName.ProductItemAddedToShoppingCartV3(
                     shoppingCartId,

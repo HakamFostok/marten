@@ -36,7 +36,7 @@ public class Bug_2883_ievent_not_working_as_identity_source : BugIntegrationCont
             _.Projections.Add<CustomerInsightsProjection>(ProjectionLifecycle.Inline);
         });
 
-        var customersToCreate = 10;
+        const int customersToCreate = 10;
 
         {
             await using var session = theStore.LightweightSession();
@@ -56,7 +56,7 @@ public class Bug_2883_ievent_not_working_as_identity_source : BugIntegrationCont
             docs.Count.ShouldBeEquivalentTo(1);
             docs.First().NewCustomers.ShouldBe(customersToCreate);
         }
-        var customersToDelete = 5;
+        const int customersToDelete = 5;
         {
             await using var session = theStore.LightweightSession();
             session.Logger = new TestOutputMartenLogger(_output);

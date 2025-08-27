@@ -22,7 +22,7 @@ public class select_clauses : LinqTestContext<select_clauses>
 
     static select_clauses()
     {
-        var number = 10;
+        const int number = 10;
 
         select(x => new {Id = x.Id});
         select(x => new {Foo = x.Id});

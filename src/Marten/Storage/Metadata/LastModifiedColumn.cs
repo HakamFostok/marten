@@ -22,7 +22,7 @@ internal class LastModifiedColumn: MetadataColumn<DateTimeOffset>, ISelectableCo
         GeneratedMethod sync,
         int index, DocumentMapping mapping)
     {
-        var variableName = "lastModified";
+        const string variableName = "lastModified";
         var memberType = typeof(DateTimeOffset);
 
         if (Member == null)

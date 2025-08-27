@@ -38,7 +38,7 @@ public class no_prior_registration_of_the_event_types: OneOffConfigurationsConte
     {
         StoreOptions(opts => opts.Events.StreamIdentity = StreamIdentity.AsString);
 
-        var stream = "Something";
+        const string stream = "Something";
         using (var session = theStore.LightweightSession())
         {
             session.Events.StartStream(stream, new MembersJoined(), new MembersDeparted());
@@ -88,7 +88,7 @@ public class no_prior_registration_of_the_event_types: OneOffConfigurationsConte
     {
         StoreOptions(opts => opts.Events.StreamIdentity = StreamIdentity.AsString);
 
-        var stream = "Something";
+        const string stream = "Something";
         await using (var session = theStore.LightweightSession())
         {
             session.Events.StartStream(stream, new MembersJoined(), new MembersDeparted());

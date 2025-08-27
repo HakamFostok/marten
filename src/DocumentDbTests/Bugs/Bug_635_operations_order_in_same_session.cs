@@ -14,7 +14,7 @@ public class Bug_635_operations_order_in_same_session: IntegrationContext
     [Fact]
     public async Task deletewhere_and_store()
     {
-        var batchSize = 256;
+        const int batchSize = 256;
 
         for (var i = 0; i < batchSize; i++)
         {
@@ -24,7 +24,7 @@ public class Bug_635_operations_order_in_same_session: IntegrationContext
         await theSession.SaveChangesAsync();
 
         var batch = new List<User>();
-        var newBatchSize = 2;
+        const int newBatchSize = 2;
         for (var i = 0; i < newBatchSize; i++)
         {
             batch.Add(new User { LastName = "batch-id1" });

@@ -23,7 +23,7 @@ public class fsharp_discriminated_union_document_operations: IDisposable, IAsync
 
     public fsharp_discriminated_union_document_operations()
     {
-        var schemaName = "strong_typed_fsharp";
+        const string schemaName = "strong_typed_fsharp";
         var options = new StoreOptions();
         options.Connection(ConnectionSource.ConnectionString);
 

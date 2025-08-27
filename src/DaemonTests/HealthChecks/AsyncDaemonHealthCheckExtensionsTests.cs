@@ -118,7 +118,7 @@ public class AsyncDaemonHealthCheckExtensionsTests: DaemonContext
         var agent = await StartDaemon();
         using var session = theStore.LightweightSession();
         var stream = Guid.NewGuid();
-        var eventCount = 100;
+        const int eventCount = 100;
         for (var i = 0; i < eventCount; i++)
             session.Events.Append(stream, new FakeEvent());
         await session.SaveChangesAsync();
@@ -145,7 +145,7 @@ public class AsyncDaemonHealthCheckExtensionsTests: DaemonContext
         await using var session = theStore.LightweightSession();
         var stream1 = Guid.NewGuid();
         var stream2 = Guid.NewGuid();
-        var eventCount = 100;
+        const int eventCount = 100;
         for (var i = 0; i < eventCount; i++)
         {
             session.Events.Append(stream1, new FakeEvent());
@@ -174,7 +174,7 @@ public class AsyncDaemonHealthCheckExtensionsTests: DaemonContext
         using var session = theStore.LightweightSession();
         var stream1 = Guid.NewGuid();
         var stream2 = Guid.NewGuid();
-        var eventCount = 500;
+        const int eventCount = 500;
         for (var i = 0; i < eventCount; i++)
         {
             session.Events.Append(stream1, new FakeEvent());
@@ -208,7 +208,7 @@ public class AsyncDaemonHealthCheckExtensionsTests: DaemonContext
         using var session = theStore.LightweightSession();
         var stream1 = Guid.NewGuid();
         var stream2 = Guid.NewGuid();
-        var eventCount = 500;
+        const int eventCount = 500;
         for (var i = 0; i < eventCount; i++)
         {
             session.Events.Append(stream1, new FakeEvent());
@@ -243,7 +243,7 @@ public class AsyncDaemonHealthCheckExtensionsTests: DaemonContext
         using var session = theStore.LightweightSession();
         var stream1 = Guid.NewGuid();
         var stream2 = Guid.NewGuid();
-        var eventCount = 500;
+        const int eventCount = 500;
         for (var i = 0; i < eventCount; i++)
         {
             session.Events.Append(stream1, new FakeEvent());
@@ -284,7 +284,7 @@ public class AsyncDaemonHealthCheckExtensionsTests: DaemonContext
         using var session = theStore.LightweightSession();
         var stream1 = Guid.NewGuid();
         var stream2 = Guid.NewGuid();
-        var eventCount = 500;
+        const int eventCount = 500;
         for (var i = 0; i < eventCount; i++)
         {
             session.Events.Append(stream1, new FakeEvent());

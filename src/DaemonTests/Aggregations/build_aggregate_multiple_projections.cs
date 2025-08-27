@@ -179,7 +179,7 @@ public class build_aggregate_multiple_projections: DaemonContext
         }
 
         // create some gaps
-        long startingId = 25;
+        const long startingId = 25;
         var group1 = Enumerable.Range(0, 5).Select(x => x + startingId).ToArray();
         var group2 = Enumerable.Range(0, 5).Select(x => x + startingId + 10).ToArray();
         var group3 = Enumerable.Range(0, 5).Select(x => x + startingId + 20).ToArray();
@@ -247,7 +247,7 @@ public class build_aggregate_multiple_projections: DaemonContext
         }
 
         // create some gaps
-        long startingId = 25;
+        const long startingId = 25;
         var group1 = Enumerable.Range(0, 5).Select(x => x + startingId).ToArray();
         var group2 = Enumerable.Range(0, 5).Select(x => x + startingId + 10).ToArray();
         var group3 = Enumerable.Range(0, 5).Select(x => x + startingId + 20).ToArray();

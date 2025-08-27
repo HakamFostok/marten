@@ -19,7 +19,7 @@ public class document_updates: IntegrationContext
         var targets = Target.GenerateRandomData(99).ToArray();
         await theStore.BulkInsertAsync(targets);
 
-        var theNewNumber = 54321;
+        const int theNewNumber = 54321;
         using (var session = theStore.LightweightSession())
         {
             targets[0].Double = theNewNumber;

@@ -27,7 +27,7 @@ public class Bug_2937_string_isnullorempty_being_ignored : BugIntegrationContext
         await theSession.SaveChangesAsync();
 
 
-        var queryValue = "Item A";
+        const string queryValue = "Item A";
         var items = await theSession.Query<ObjectWithString>()
             .Where(x => string.IsNullOrEmpty(queryValue) || x.String == queryValue).ToListAsync();
 

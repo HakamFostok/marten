@@ -71,7 +71,7 @@ public class asserting_on_expected_event_version_on_append: IntegrationContext
         var joined = new MembersJoined { Members = new string[] { "Rand", "Matt", "Perrin", "Thom" } };
         var departed = new MembersDeparted { Members = new[] { "Thom" } };
 
-        var stream = "First";
+        const string stream = "First";
 
         theSession.Events.Append(stream, joined);
         theSession.Events.Append(stream, 2, departed);
@@ -92,7 +92,7 @@ public class asserting_on_expected_event_version_on_append: IntegrationContext
         var joined = new MembersJoined { Members = new string[] { "Rand", "Matt", "Perrin", "Thom" } };
         var departed = new MembersDeparted { Members = new[] { "Thom" } };
 
-        var stream = "Another";
+        const string stream = "Another";
         theSession.Events.Append(stream, joined);
         await theSession.SaveChangesAsync();
 
